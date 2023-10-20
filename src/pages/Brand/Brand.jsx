@@ -2,9 +2,9 @@
 
 const Brand = () => {
     return (
-        <div>
+        <section>
             <h2>Brand page</h2>
-        </div>
+        </section>
     );
 };
 

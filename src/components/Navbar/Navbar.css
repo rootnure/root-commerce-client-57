@@ -1,0 +1,13 @@
+.active {
+    color: white !important;
+    background-color: #EA580C !important;
+}
+
+.active:hover {
+    color: black !important;
+    background-color: #f79966 !important;
+}
+
+.root-nav-btn {
+    @apply text-orange-600 px-3 py-1 rounded-full duration-150 border border-orange-400 hover:border-orange-500 hover:bg-orange-500 hover:text-white;
+}
