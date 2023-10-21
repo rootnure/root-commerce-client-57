@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Swal from 'sweetalert2'
 import moment from 'moment';
@@ -6,6 +6,7 @@ import moment from 'moment';
 
 const UpdateProduct = () => {
 
+    const navigate = useNavigate();
     const product = useLoaderData();
 
     const { _id, img: oldImg, name: oldName, brand_name: oldBrand, type: oldType, price: oldPrice, short_description: oldDescription, rating: oldRating } = product;
@@ -69,7 +70,7 @@ const UpdateProduct = () => {
                         willClose: () => {
                             clearInterval(timerInterval)
                         }
-                    })
+                    }).then(navigate(`/products/${brand_name}`))
                 }
             })
     }
@@ -129,7 +130,7 @@ const UpdateProduct = () => {
                     </div>
                     {/* submit */}
                     <div className="col-span-2">
-                        <button type="submit" className="font-bold w-full px-6 py-2.5 rounded-md border border-orange-600 hover:text-orange-600 bg-orange-600 hover:bg-transparent text-white duration-200">Update Details</button>
+                        <button type="submit" className="font-bold w-full px-6 py-2.5 rounded-md border border-orange-600 bg-orange-600 hover:bg-orange-500 text-white duration-200">Update Details</button>
                     </div>
                 </form>
             </div>

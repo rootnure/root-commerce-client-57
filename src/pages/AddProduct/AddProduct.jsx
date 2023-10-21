@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 
 
 const AddProduct = () => {
+
+    const navigate = useNavigate();
 
     const [types, setTypes] = useState([]);
     const [brands, setBrands] = useState([]);
@@ -60,7 +63,7 @@ const AddProduct = () => {
                         willClose: () => {
                             clearInterval(timerInterval)
                         }
-                    })
+                    }).then(navigate('/'))
                 }
             })
     }
@@ -119,7 +122,7 @@ const AddProduct = () => {
                     </div>
                     {/* submit */}
                     <div className="col-span-2">
-                        <button type="submit" className="font-bold w-full px-6 py-2.5 rounded-md border border-orange-600 hover:text-orange-600 bg-orange-600 hover:bg-transparent text-white duration-200">Add Product</button>
+                        <button type="submit" className="font-bold w-full px-6 py-2.5 rounded-md border border-orange-600 bg-orange-600 hover:bg-orange-500 text-white duration-200">Add Product</button>
                     </div>
                 </form>
             </div>

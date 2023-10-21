@@ -15,7 +15,7 @@ const BrandProduct = ({ product }) => {
                 </figure>
                 <div className="card-body bg-orange-600 text-white rounded-b-md">
                     <h2 className="card-title">{name}</h2>
-                    <p>{short_description}</p>
+                    <p className='text-justify'>{short_description}</p>
                     <p><span className='font-bold'>Type: </span>{type}</p>
                     <div className='flex justify-between'>
                         <p className='flex items-center'><span className='font-bold me-1'>Price: </span>{price}<TbCurrencyTaka></TbCurrencyTaka></p>
