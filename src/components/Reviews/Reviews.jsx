@@ -4,18 +4,16 @@ const Reviews = () => {
     return (
         <>
             <section
-                className="my-12 mx-5 xl:mx-0 bg-gradient-to-r from-orange-400 to-orange-600 rounded-xl p-12 flex flex-col lg:flex-row gap-x-20">
+                className="my-12 mx-5 xl:mx-0 bg-gradient-to-r from-orange-400 to-orange-600 rounded-xl p-12 flex flex-col lg:flex-row gap-x-24">
                 {/* section content */}
                 <div className="flex-1 flex items-center">
-                    <div className="space-y-5">
-                        <h2 className="text-4xl text-white font-pacifico">
-                            Meet Our Super
-                            <br />
-                            Clients
+                    <div className="space-y-4">
+                        <h2 className="text-4xl flex flex-col text-white font-pacifico leading-normal">
+                            <span>Our Super</span>
+                            <span>Clients Review</span>
                         </h2>
                         <p className="text-white">What our customer have to say about their shopping experience with <span className="text-xl font-pacifico">root</span>. Shop from <span className="text-xl font-pacifico">root</span> and share your experience because your voice matters.
                         </p>
-                        <button className="btn border-gradient-to text-orange-400 bg-white rounded-xl font-bold">Show All</button>
                     </div>
                 </div>
                 {/* review container */}
@@ -45,7 +43,7 @@ const Reviews = () => {
                         <img className="absolute -top-6 -left-6 border-4 border-white rounded-full bg-white"
                             src="https://i.ibb.co/pJmH4Nv/client.png" alt="" />
                         <p>I have never had such good service anywhere else like root. Fully satisfactory and recommended.</p>
-                        <h4 className="font-bold">Mrs. Singhania</h4>
+                        <h4 className="font-bold">Mrs. Sugandha Mishrah</h4>
                         <div className="flex justify-end">
                             <img src="https://i.ibb.co/3R1kQNV/circles.png" alt="" />
                         </div>
