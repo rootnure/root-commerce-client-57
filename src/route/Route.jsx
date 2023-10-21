@@ -4,6 +4,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home";
 import Brand from "../pages/Brand/Brand";
 import AddProduct from "../pages/AddProduct/AddProduct";
+import UpdateProduct from "../pages/UpdateProduct/UpdateProduct";
 
 
 const router = createBrowserRouter([
@@ -31,8 +32,8 @@ const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`https://57-root-server.vercel.app/product/${params.id}`),
             },
             {
-                path: '/update/:id',
-                element: <div>Update product details page</div>,
+                path: '/updateProduct/:id',
+                element: <UpdateProduct />,
                 loader: ({ params }) => fetch(`https://57-root-server.vercel.app/product/${params.id}`),
             },
             {

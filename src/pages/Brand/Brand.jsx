@@ -11,9 +11,6 @@ const Brand = () => {
 
     const loadedBrand = location.pathname.split("/")[2];
 
-    console.log(loadedProducts[0]);
-
-
     return (
         <section>
             <Helmet>
