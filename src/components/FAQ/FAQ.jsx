@@ -7,12 +7,10 @@ const FAQ = () => {
     const [faq, setFaq] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/faq')
+        fetch('https://57-root-server.vercel.app/faq')
             .then(res => res.json())
             .then(data => setFaq(data))
     }, []);
-
-    console.log(faq);
 
     return (
         <section className="my-12">
