@@ -44,7 +44,7 @@ const Footer = () => {
                             <div>
                                 <h2 className="text-4xl text-orange-600 font-pacifico">Write to us</h2>
                             </div>
-                            <form onSubmit={handleFooterFormSubmit} className="space-y-3 mt-6 text-orange-600">
+                            <form data-aos="fade-up" onSubmit={handleFooterFormSubmit} className="space-y-3 mt-6 text-orange-600">
                                 <div className="flex gap-2">
                                     <input className="w-full px-3 py-1 rounded duration-150" type="text" name="name" placeholder="Name (optional)" />
                                     <input className="w-full px-3 py-1 rounded duration-150" type="email" name="email" placeholder="Email (optional)" />
@@ -54,8 +54,8 @@ const Footer = () => {
                                 <textarea className="w-full h-20 px-2 py-2 rounded duration-150" name="message" placeholder="Message*" required></textarea>
                                 <br />
                                 <div className="flex justify-between">
-                                    <button type="submit" className="px-6 py-1.5 border-2 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white duration-200 rounded-full ">Send Message</button>
-                                    <small className="text-orange-600">*required</small>
+                                    <p className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-red-200 to-orange-400">*required</p>
+                                    <button type="submit" className="font-bold px-6 py-1.5 border-2 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white duration-200 rounded-full ">Send Message</button>
                                 </div>
                             </form>
                         </div>

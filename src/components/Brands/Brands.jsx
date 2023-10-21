@@ -14,7 +14,7 @@ const Brands = () => {
 
     return (
         <section>
-            <h2 className="text-4xl py-4 text-center text-orange-600 font-pacifico divider">Popular Brands</h2>
+            <h2 className="text-4xl pt-12 pb-4 text-center text-orange-600 font-pacifico divider">Popular Brands</h2>
             <div className="py-4 grid grid-cols-3 gap-4">
                 {
                     brands.map(brand => <BrandCart
