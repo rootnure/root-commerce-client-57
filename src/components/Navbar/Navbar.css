@@ -1,6 +1,7 @@
 .active {
     color: white !important;
     background-color: #EA580C !important;
+    border-color: #EA580C !important;
 }
 
 .active:hover {
@@ -9,5 +10,9 @@
 }
 
 .root-nav-btn {
-    @apply text-orange-600 px-3 py-1 rounded-full duration-150 border border-orange-400 hover:border-orange-500 hover:bg-orange-500 hover:text-white;
+    @apply text-orange-600 px-3 py-1 rounded-full duration-150 border hover:border-orange-500 hover:bg-orange-500 hover:text-white;
+}
+
+.root-nav-btn:hover {
+    @apply border-orange-400;
 }
