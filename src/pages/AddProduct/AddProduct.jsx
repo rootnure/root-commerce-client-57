@@ -42,26 +42,26 @@ const AddProduct = () => {
         })
             .then(res => res.json())
             .then(result => {
-                console.log(result);
-                let timerInterval
-                Swal.fire({
-                    icon: "success",
-                    title: 'Product added successfully!',
-                    html: 'Will close in <b></b> seconds.',
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: () => {
-                        // Swal.showLoading()
-                        const b = Swal.getHtmlContainer().querySelector('b')
-                        timerInterval = setInterval(() => {
-                            b.textContent = (Swal.getTimerLeft() / 1000).toFixed(1)
-                        }, 100)
-                    },
-                    willClose: () => {
-                        clearInterval(timerInterval)
-                    }
-                })
+                if (result.insertedId) {
+                    let timerInterval;
+                    Swal.fire({
+                        icon: "success",
+                        title: 'Product added successfully!',
+                        html: 'Will close in <b></b> seconds.',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                                b.textContent = (Swal.getTimerLeft() / 1000).toFixed(1)
+                            }, 100)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        }
+                    })
+                }
             })
     }
 
