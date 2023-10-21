@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { BsArrowLeft } from "react-icons/bs";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 
 
@@ -71,6 +72,9 @@ const AddProduct = () => {
     return (
         <section>
             <h2 className="text-4xl py-4 text-center text-orange-600 font-pacifico divider">Add New Product</h2>
+            <div className="my-6">
+                <h3><Link className="text-xl font-pacifico flex items-center gap-2 p-4 hover:bg-orange-600 w-fit rounded-lg hover:text-white duration-150" to='/'><BsArrowLeft></BsArrowLeft>Back to Home</Link></h3>
+            </div>
             <div>
                 <form onSubmit={handleAddProduct} className="grid grid-cols-2 gap-x-2 gap-y-4 py-1.5">
                     {/* image */}

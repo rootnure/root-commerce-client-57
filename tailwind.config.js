@@ -8,6 +8,7 @@ export default {
     extend: {
       fontFamily: {
         'pacifico': ["'Pacifico', cursive"],
+        'exo-2': ["'Exo 2', sans-serif"],
       },
     },
   },

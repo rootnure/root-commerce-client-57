@@ -44,7 +44,7 @@ const Footer = () => {
                             <div>
                                 <h2 className="text-4xl text-orange-600 font-pacifico">Write to us</h2>
                             </div>
-                            <form data-aos="fade-up" onSubmit={handleFooterFormSubmit} className="space-y-3 mt-6 text-orange-600">
+                            <form onSubmit={handleFooterFormSubmit} className="space-y-3 mt-6 text-orange-600">
                                 <div className="flex gap-2">
                                     <input className="w-full px-3 py-1 rounded duration-150" type="text" name="name" placeholder="Name (optional)" />
                                     <input className="w-full px-3 py-1 rounded duration-150" type="email" name="email" placeholder="Email (optional)" />

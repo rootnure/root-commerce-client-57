@@ -5,6 +5,7 @@ import Home from "../pages/Home/Home";
 import Brand from "../pages/Brand/Brand";
 import AddProduct from "../pages/AddProduct/AddProduct";
 import UpdateProduct from "../pages/UpdateProduct/UpdateProduct";
+import ProductDetails from "../pages/ProductDetails/ProductDetails";
 
 
 const router = createBrowserRouter([
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/details/:id',
-                element: <div>product details page</div>,
+                element: <ProductDetails />,
                 loader: ({ params }) => fetch(`https://57-root-server.vercel.app/product/${params.id}`),
             },
             {

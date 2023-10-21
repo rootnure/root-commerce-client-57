@@ -1,7 +1,9 @@
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Swal from 'sweetalert2'
 import moment from 'moment';
+import { BsArrowLeft } from "react-icons/bs";
+import { Helmet } from "react-helmet-async";
 
 
 const UpdateProduct = () => {
@@ -78,7 +80,13 @@ const UpdateProduct = () => {
 
     return (
         <section>
+            <Helmet>
+                <title>Update {oldName} Details | root</title>
+            </Helmet>
             <h2 className="text-4xl py-4 text-center text-orange-600 font-pacifico divider">Update {oldName}</h2>
+            <div className="my-6">
+                <h3><Link className="text-xl font-pacifico flex items-center gap-2 p-4 hover:bg-orange-600 w-fit rounded-lg hover:text-white duration-150" to='/'><BsArrowLeft></BsArrowLeft>Back to Home</Link></h3>
+            </div>
             <div>
                 <form onSubmit={handleUpdateProduct} className="grid grid-cols-2 gap-x-2 gap-y-4 py-1.5">
                     {/* image */}
