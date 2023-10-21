@@ -6,10 +6,15 @@ const Brands = () => {
 
     const [brands, setBrands] = useState([]);
 
+    const [isDataLoading, setIsDataLoading] = useState(true);
+
     useEffect(() => {
         fetch('https://57-root-server.vercel.app/brands')
             .then(res => res.json())
-            .then(data => setBrands(data))
+            .then(data => {
+                setBrands(data);
+                setIsDataLoading(false);
+            })
     }, []);
 
     return (
@@ -17,9 +22,13 @@ const Brands = () => {
             <h2 className="text-4xl pt-12 pb-4 text-center text-orange-600 font-pacifico divider">Popular Brands</h2>
             <div className="py-4 grid grid-cols-3 gap-4">
                 {
-                    brands.map(brand => <BrandCart
-                        key={brand._id}
-                        brand={brand}></BrandCart>)
+                    isDataLoading ?
+                        <div className="col-span-3 flex justify-center">
+                            <span className="loading loading-bars loading-lg pt-28 pb-20 text-orange-600"></span>
+                        </div> :
+                        brands.map(brand => <BrandCart
+                            key={brand._id}
+                            brand={brand}></BrandCart>)
                 }
             </div>
         </section>

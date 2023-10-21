@@ -26,9 +26,9 @@ const AddProduct = () => {
         const name = form.name.value;
         const brand_name = form.brandName.value;
         const type = form.type.value;
-        const price = form.price.value;
+        const price = parseFloat(form.price.value);
         const short_description = form.shortDescription.value;
-        const rating = form.rating.value;
+        const rating = parseFloat(form.rating.value);
         // form.reset();
         const newProduct = { img, name, brand_name, type, price, short_description, rating };
         console.log(newProduct);
@@ -45,9 +45,11 @@ const AddProduct = () => {
                 console.log(result);
                 let timerInterval
                 Swal.fire({
+                    icon: "success",
                     title: 'Product added successfully!',
                     html: 'Will close in <b></b> seconds.',
-                    timer: 3500,
+                    showConfirmButton: false,
+                    timer: 3000,
                     timerProgressBar: true,
                     didOpen: () => {
                         // Swal.showLoading()
