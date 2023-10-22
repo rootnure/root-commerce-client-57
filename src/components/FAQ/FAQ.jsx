@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import Question from "./Question";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 
 const FAQ = () => {
 
     const [faq, setFaq] = useState([]);
-
     const [isDataLoading, setIsDataLoading] = useState(true);
 
     useEffect(() => {
@@ -25,9 +25,7 @@ const FAQ = () => {
             <div className="w-9/12 mx-auto space-y-4">
                 {
                     isDataLoading ?
-                        <div className="col-span-3 flex justify-center">
-                            <span className="loading loading-bars loading-lg pt-28 pb-20 text-orange-600"></span>
-                        </div> :
+                        <LoadingSpinner /> :
                         faq.map((ques, idx) => <Question
                             key={ques._id}
                             ques={ques}
@@ -38,4 +36,4 @@ const FAQ = () => {
     );
 };
 
-export default FAQ;
+export default FAQ; // eslint-disable-line

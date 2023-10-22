@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import BrandCart from "./BrandCart";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 
 const Brands = () => {
@@ -23,9 +24,7 @@ const Brands = () => {
             <div className="py-4 grid grid-cols-3 gap-4">
                 {
                     isDataLoading ?
-                        <div className="col-span-3 flex justify-center">
-                            <span className="loading loading-bars loading-lg pt-28 pb-20 text-orange-600"></span>
-                        </div> :
+                        <LoadingSpinner /> :
                         brands.map(brand => <BrandCart
                             key={brand._id}
                             brand={brand}></BrandCart>)

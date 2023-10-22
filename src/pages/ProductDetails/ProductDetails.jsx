@@ -3,6 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { BsStarFill, BsStarHalf, BsStar, BsPlusLg, BsArrowLeft } from "react-icons/bs";
 import { AiOutlineMinus } from "react-icons/ai";
 import { useEffect, useState } from "react";
+import { TbCurrencyTaka } from "react-icons/tb";
 
 
 const ProductDetails = () => {
@@ -86,16 +87,16 @@ const ProductDetails = () => {
             </div>
             <div className="grid grid-cols-3 gap-6">
                 <div className="card card-compact">
-                    <figure className="h-[350px]">
-                        <img src={img} alt={name} className="" />
+                    <figure className="h-[350px] p-4">
+                        <img src={img} alt={name} className="max-h-full" />
                     </figure>
                 </div>
                 <div className="col-span-2 space-y-4">
                     <h2 className="text-3xl text-orange-600 font-exo-2 font-semibold">{name}</h2>
                     <div className="flex gap-4">
-                        <p className="px-2 py-0.5 rounded-full bg-orange-300"><span>Price: </span><span className="font-semibold">{price}</span></p>
-                        <p className="px-2 py-0.5 rounded-full bg-orange-300"><span>Status: </span><span className="font-semibold">In Stock</span></p>
-                        <p className="px-2 py-0.5 rounded-full bg-orange-300"><span>Brand: </span><span className="font-semibold">{brand_name}</span></p>
+                        <p className="px-2 py-0.5 rounded-full bg-orange-300 flex gap-1"><span>Price: </span><span className="font-semibold flex items-center">{price}<TbCurrencyTaka></TbCurrencyTaka></span></p>
+                        <p className="px-2 py-0.5 rounded-full bg-orange-300 flex gap-1"><span>Status: </span><span className="font-semibold">In Stock</span></p>
+                        <p className="px-2 py-0.5 rounded-full bg-orange-300 flex gap-1"><span>Brand: </span><span className="font-semibold">{brand_name}</span></p>
                     </div>
                     <div>
                         <h3 className="text-xl font-semibold">Key Features</h3>
