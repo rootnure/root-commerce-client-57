@@ -42,6 +42,10 @@ const router = createBrowserRouter([
                 element: <div>User cart items</div>,
                 loader: ({ params }) => fetch(`https://57-root-server.vercel.app/cart/${params.email}`),
             },
+            {
+                path: '/profile',
+                element: <div>User profile</div>,
+            },
 
         ]
     },

@@ -2,10 +2,25 @@ import { IoMdHome, IoIosCart, IoMdPerson, IoIosLogIn, IoIosLogOut, IoMdAddCircle
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import './Navbar.css';
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
 
     const isLightMode = true;
+
+    const user = { email: 'nur.diu.2791@gmail.com' };
+    const { email } = user;
+
+    let cartTotalItems = 0;
+    const [cartData, setCartData] = useState({});
+    useEffect(() => {
+        fetch(`https://57-root-server.vercel.app/cart/${email}`)
+            .then(res => res.json())
+            .then(data => setCartData(data))
+    }, [email]);
+    for (const itemId in cartData) {
+        cartTotalItems += parseInt(cartData[itemId]);
+    }
 
     const handleLogOut = () => {
         console.log('logout clicked');
@@ -19,8 +34,9 @@ const Navbar = () => {
             <NavLink to="/add-product" title="Add new product" className={`root-nav-btn ${isLightMode ? "border-black" : "border-white"}`}>
                 <IoMdAddCircleOutline></IoMdAddCircleOutline>
             </NavLink>
-            <NavLink to="/cart" title="My Cart" className={`root-nav-btn ${isLightMode ? "border-black" : "border-white"}`}>
+            <NavLink to={`/cart/${email}`} title="My Cart" className={`root-nav-btn ${isLightMode ? "border-black" : "border-white"} relative group`}>
                 <IoIosCart></IoIosCart>
+                <p className="absolute -top-2 right-0 px-0.5 bg-orange-600 text-white rounded-full text-xs border border-orange-600">{cartTotalItems}</p>
             </NavLink>
             <NavLink to="/profile" title="My Profile" className={`root-nav-btn ${isLightMode ? "border-black" : "border-white"}`}>
                 <IoMdPerson></IoMdPerson>
