@@ -78,7 +78,7 @@ const UpdateProduct = () => {
                         willClose: () => {
                             clearInterval(timerInterval)
                         }
-                    }).then(navigate(`/products/${brand_name}`))
+                    }).then(navigate(`/${brand_name}`))
                 }
             })
     }

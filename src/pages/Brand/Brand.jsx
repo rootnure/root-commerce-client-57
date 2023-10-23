@@ -10,7 +10,7 @@ const Brand = () => {
 
     const location = useLocation();
 
-    const loadedBrand = location.pathname.split("/")[0];
+    const loadedBrand = location.pathname.split("/")[1];
 
     return (
         <section>
@@ -23,7 +23,8 @@ const Brand = () => {
             </div>
             <div className="grid grid-cols-3 gap-3 mt-12">
                 {
-                    loadedProducts.length < 1 ? <h2 className="text-2xl font-bold text-orange-300 italic text-center col-span-3 pt-48 pb-40">No products available for {loadedBrand}</h2> :
+                    loadedProducts.length < 1 ?
+                        <h2 className="text-2xl font-bold text-orange-300 italic text-center col-span-3 pt-12 pb-20">No products available for {loadedBrand}</h2> :
                         loadedProducts.map(product => <BrandProduct key={product._id} product={product}></BrandProduct>)
                 }
             </div>
