@@ -1,10 +1,11 @@
 import { Helmet } from "react-helmet-async";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { BsPlusLg, BsArrowLeft } from "react-icons/bs";
 import { AiOutlineMinus } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import { TbCurrencyTaka } from "react-icons/tb";
 import Rating from "../../components/Rating/Rating";
+import Swal from "sweetalert2";
 
 
 const ProductDetails = () => {
@@ -12,6 +13,8 @@ const ProductDetails = () => {
     const user = { email: 'nur.diu.2791@gmail.com' };
 
     const { email } = user;
+
+    const navigate = useNavigate();
 
     const [oldCart, setOldCart] = useState([]);
 
@@ -49,7 +52,7 @@ const ProductDetails = () => {
             ...oldCart,
             [id]: parseInt(quantity)
         }
-        console.log({ oldCart, cartData });
+        // set/update cart to db
         fetch(`https://57-root-server.vercel.app/cart/${email}`, {
             method: 'PUT',
             headers: {
@@ -60,6 +63,16 @@ const ProductDetails = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                if (data.modifiedCount > 0 || data.matchedCount > 0) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Added',
+                        text: 'Product successfully added to cart',
+                        timer: 3000,
+                        timerProgressBar: true,
+                        showConfirmButton: false
+                    }).then(navigate(`/products/${brand_name}`))
+                }
             })
     }
 
