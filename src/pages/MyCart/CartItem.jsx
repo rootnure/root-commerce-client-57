@@ -22,7 +22,7 @@ const CartItem = ({ productId, quantity, handleQuantity, handleRemoveFromCart })
     return (
         <div className='border border-orange-600 rounded-md'>
             <div className='pt-3 pb-4'>
-                <h3 className="text-lg px-4 pb-2 border-b flex gap-1.5">Product of <Link to={`/products/${brand_name}`} title={`View All from ${brand_name}`} className='flex items-center gap-1 w-fit text-blue-600 font-bold'>{brand_name}</Link></h3>
+                <h3 className="text-lg px-4 pb-2 border-b flex gap-1.5">Product of <Link to={`/products/${brand_name}`} title={`View All from ${brand_name}`} className='flex items-center gap-1 w-fit text-orange-600 font-bold'>{brand_name}</Link></h3>
             </div>
             <div className="card card-compact w-full flex-row px-8 py-4 rounded-lg">
                 {/* item img */}

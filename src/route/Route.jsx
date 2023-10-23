@@ -20,7 +20,7 @@ const router = createBrowserRouter([
                 element: <Home />
             },
             {
-                path: '/products/:brand',
+                path: '/:brand',
                 element: <Brand />,
                 loader: ({ params }) => fetch(`https://57-root-server.vercel.app/products/${params.brand}`),
             },
