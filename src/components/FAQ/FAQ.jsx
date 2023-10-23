@@ -22,14 +22,13 @@ const FAQ = () => {
             <div className="divider py-12">
                 <img src="https://i.ibb.co/Gt7Pzfs/Image.png" alt="faq" className="w-2/12 mx-auto" />
             </div>
-            <div className="w-9/12 mx-auto space-y-4">
+            <div data-aos="fade-up" className="w-9/12 mx-auto space-y-3">
                 {
                     isDataLoading ?
                         <LoadingSpinner /> :
-                        faq.map((ques, idx) => <Question
+                        faq.map(ques => <Question
                             key={ques._id}
-                            ques={ques}
-                            idx={idx}></Question>)
+                            ques={ques}></Question>)
                 }
             </div>
         </section>

@@ -3,7 +3,7 @@
 const Banner = () => {
     return (
         <section>
-            <div className="hero xl:h-[467px]" style={{ backgroundImage: 'url("https://i.ibb.co/NrvG1pp/image.png")' }}>
+            <div className="hero xl:h-[467px] 2xl:h-[560px]" style={{ backgroundImage: 'url("https://i.ibb.co/NrvG1pp/image.png")' }}>
                 <div className="hero-overlay bg-white bg-opacity-10"></div>
                 <div className="hero-content text-center">
                     <div className="max-w-md text-white">

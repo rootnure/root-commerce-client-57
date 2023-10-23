@@ -24,7 +24,7 @@ const Footer = () => {
                     <img src="https://i.ibb.co/30ZpCGQ/logo-dark-bg-removed.png" alt="Website Logo" className="w-24 mb-4" />
                     <div className="grid grid-cols-2 gap-20 mt-4">
                         <div className="flex flex-col gap-6">
-                            <p className="mt-2">Always ready to serve you. Contact with us to share your valuable reviews and get a chance to win exciting discount vouchers.</p>
+                            <p className="mt-2">Always ready to serve you. Connect with us to share your valuable reviews and get a chance to win exciting discount vouchers.</p>
                             <div className="flex gap-4 text-4xl text-orange-600">
                                 <FaFacebook></FaFacebook>
                                 <FaTwitter></FaTwitter>
@@ -55,7 +55,7 @@ const Footer = () => {
                                 <br />
                                 <div className="flex justify-between">
                                     <p className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-red-200 to-orange-400">*required</p>
-                                    <button type="submit" className="font-bold px-6 py-1.5 border-2 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white duration-200 rounded-full ">Send Message</button>
+                                    <button type="submit" className="font-bold px-6 py-1.5 border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white duration-200 rounded-full ">Send Message</button>
                                 </div>
                             </form>
                         </div>
