@@ -3,8 +3,6 @@ import Marquee from "react-fast-marquee";
 
 
 const ComingSoon = ({ restBrands }) => {
-    console.log(restBrands);
-
     return (
         <section>
             <div className="divider font-pacifico text-4xl text-orange-600 py-12">Brands Coming Soon</div>
