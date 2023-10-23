@@ -19,12 +19,7 @@ const MyCart = () => {
 
     const productIds = Object.keys(myCartData);
 
-    const handleQuantity = (_id, isIncreased) => {
-        const newQuantity = isIncreased ? (myCartData[_id] + 1) : (myCartData[_id] - 1);
-        const newCart = {
-            ...myCartData,
-            [_id]: parseInt(newQuantity < 1 ? 1 : newQuantity)
-        }
+    const updateCartToDb = newCart => {
         fetch(`https://57-root-server.vercel.app/cart/${email}`, {
             method: 'PUT',
             headers: {
@@ -40,11 +35,20 @@ const MyCart = () => {
             })
     }
 
+    const handleQuantity = (_id, isIncreased) => {
+        const newQuantity = isIncreased ? (myCartData[_id] + 1) : (myCartData[_id] - 1);
+        const newCart = {
+            ...myCartData,
+            [_id]: parseInt(newQuantity < 1 ? 1 : newQuantity)
+        }
+        updateCartToDb(newCart);
+    }
+
     const handleRemoveFromCart = _id => {
         console.log(myCartData);
         const newCartData = { ...myCartData };
         delete newCartData[_id];
-        setMyCartData(newCartData);
+        updateCartToDb(newCartData);
     }
 
     return (
@@ -57,12 +61,14 @@ const MyCart = () => {
             </div>
             <div className="space-y-4">
                 {
-                    productIds.map(productId => <CartItem
-                        key={productId}
-                        productId={productId}
-                        quantity={myCartData[productId]}
-                        handleQuantity={handleQuantity}
-                        handleRemoveFromCart={handleRemoveFromCart}></CartItem>)
+                    productIds.length > 0 ?
+                        productIds.map(productId => <CartItem
+                            key={productId}
+                            productId={productId}
+                            quantity={myCartData[productId]}
+                            handleQuantity={handleQuantity}
+                            handleRemoveFromCart={handleRemoveFromCart}></CartItem>) :
+                        <h2 className="text-2xl font-bold text-orange-300 italic text-center col-span-3 py-20">No products added to cart yet</h2>
                 }
             </div>
         </section>
