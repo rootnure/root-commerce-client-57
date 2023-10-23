@@ -19,10 +19,11 @@ const Rating = ({ rating }) => {
     }
     return (
         <>
-            <span className="flex text-orange-600">
+            <span className="flex text-orange-600 items-center">
                 {
                     ratingStars.map(star => star)
                 }
+                <span className='ms-1 text-xs'>({rating})</span>
             </span>
         </>
     );

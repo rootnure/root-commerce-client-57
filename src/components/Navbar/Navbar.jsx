@@ -36,7 +36,7 @@ const Navbar = () => {
             <NavLink to="/add-product" title="Add new product" className="root-nav-btn border-black dark:border-white">
                 <IoMdAddCircleOutline></IoMdAddCircleOutline>
             </NavLink>
-            <NavLink to={`/cart/${email}`} title="My Cart" className="root-nav-btn border-black dark:border-white indicator">
+            <NavLink to="/myCart" title="My Cart" className="root-nav-btn border-black dark:border-white indicator">
                 <span className="indicator-item badge badge-secondary bg-orange-600">{cartTotalItems}</span>
                 <IoIosCart></IoIosCart>
             </NavLink>
