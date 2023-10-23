@@ -1,9 +1,10 @@
 import { Helmet } from "react-helmet-async";
 import { Link, useLoaderData } from "react-router-dom";
-import { BsStarFill, BsStarHalf, BsStar, BsPlusLg, BsArrowLeft } from "react-icons/bs";
+import { BsPlusLg, BsArrowLeft } from "react-icons/bs";
 import { AiOutlineMinus } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import { TbCurrencyTaka } from "react-icons/tb";
+import Rating from "../../components/Rating/Rating";
 
 
 const ProductDetails = () => {
@@ -23,21 +24,6 @@ const ProductDetails = () => {
     const productInfo = useLoaderData();
 
     const { _id: id, img, name, brand_name, price, short_description, rating } = productInfo;
-
-    // generate rating stars dynamically upon rating value
-    const ratingStars = [];
-    const ratingIntPart = parseInt(Math.floor(rating));
-    const isRatingFractioned = !!(rating % 1);
-    const ratingLessFrom5Int = Math.floor(5 - rating);
-    for (let i = 0; i < ratingIntPart; i++) {
-        ratingStars.push(<BsStarFill key={ratingStars.length}></BsStarFill>);
-    }
-    if (isRatingFractioned) {
-        ratingStars.push(<BsStarHalf key={ratingStars.length}></BsStarHalf>);
-    }
-    for (let i = 0; i < ratingLessFrom5Int; i++) {
-        ratingStars.push(<BsStar key={ratingStars.length}></BsStar>);
-    }
 
     const handleQuantity = isIncreased => {
         const quantityElement = document.getElementById('quantity');
@@ -104,11 +90,7 @@ const ProductDetails = () => {
                     </div>
                     <div className="flex items-center gap-2">
                         <span>Rating:</span>
-                        <span className="flex text-orange-600">
-                            {
-                                ratingStars.map(star => star)
-                            }
-                        </span>
+                        <Rating rating={rating} />
                     </div>
                     <form onSubmit={handleAddToCart} className="flex gap-x-8">
                         <div className="w-fit flex items-center border-2">
