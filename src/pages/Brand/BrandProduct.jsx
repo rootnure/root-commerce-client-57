@@ -15,10 +15,11 @@ const BrandProduct = ({ product }) => {
                 </figure>
                 <div className="card-body bg-orange-600 text-white rounded-b-md">
                     <h2 className="card-title">{name}</h2>
-                    <p className='text-justify'>{short_description}</p>
+                    <h4 className='text-lg'><span className='font-bold'>Brand: </span>{brand_name}</h4>
                     <p><span className='font-bold'>Type: </span>{type}</p>
+                    <p className='text-justify'>{short_description}</p>
                     <div className='flex justify-between'>
-                        <p className='flex items-center'><span className='font-bold me-1'>Price: </span>{price}<TbCurrencyTaka></TbCurrencyTaka></p>
+                        <p className='flex items-center'><span className='font-bold me-1'>Price: </span><span className='hover:scale-125 hover:ms-1.5 hover:font-bold flex items-center duration-150'>{price}<TbCurrencyTaka></TbCurrencyTaka></span></p>
                         <p className='flex items-center justify-end gap-1'><span><TbStarFilled></TbStarFilled></span>{parseFloat(rating).toFixed(2)}</p>
                     </div>
                     <hr />

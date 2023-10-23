@@ -21,14 +21,20 @@ const UpdateProduct = () => {
     useEffect(() => {
         fetch('https://57-root-server.vercel.app/types')
             .then(res => res.json())
-            .then(data => setTypes(data));
-    }, []);
+            .then(data => {
+                const restTypes = data.filter(type => type !== oldType);
+                setTypes(restTypes);
+            });
+    }, [oldType]);
 
     useEffect(() => {
         fetch('https://57-root-server.vercel.app/brands')
             .then(res => res.json())
-            .then(data => setBrands(data));
-    }, []);
+            .then(data => {
+                const restBrands = data.filter(brand => brand.brandName !== oldBrand);
+                setBrands(restBrands);
+            });
+    }, [oldBrand]);
 
     const handleUpdateProduct = e => {
         e.preventDefault();
