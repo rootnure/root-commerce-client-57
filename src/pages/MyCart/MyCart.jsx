@@ -3,6 +3,7 @@ import { BsArrowLeft } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 
 const MyCart = () => {
@@ -31,6 +32,11 @@ const MyCart = () => {
             .then(data => {
                 if (data.modifiedCount > 0) {
                     setMyCartData(newCart);
+                    Swal.fire(
+                        'Updated!',
+                        'Your cart has been updated.',
+                        'success'
+                    )
                 }
             })
     }
@@ -45,10 +51,20 @@ const MyCart = () => {
     }
 
     const handleRemoveFromCart = _id => {
-        console.log(myCartData);
-        const newCartData = { ...myCartData };
-        delete newCartData[_id];
-        updateCartToDb(newCartData);
+        Swal.fire({
+            title: 'Are you sure?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#e33',
+            cancelButtonColor: '#4c6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const newCartData = { ...myCartData };
+                delete newCartData[_id];
+                updateCartToDb(newCartData);
+            }
+        })
     }
 
     return (
