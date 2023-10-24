@@ -10,7 +10,7 @@ const Brand = () => {
 
     const location = useLocation();
 
-    const loadedBrand = location.pathname.split("/")[1];
+    const loadedBrand = location.pathname.split("/")[2];
 
     return (
         <section>

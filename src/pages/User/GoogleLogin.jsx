@@ -24,7 +24,7 @@ const GoogleLogin = () => {
         <>
             <div>
                 <p className="divider">Login Using</p>
-                <button onClick={handleGoogleLogin} className="flex items-center justify-center py-1 gap-2 font-semibold border border-white text-xl rounded-md bg-white text-orange-900duration-150 w-full hover:bg-transparent">
+                <button onClick={handleGoogleLogin} className="flex items-center justify-center py-1 gap-2 font-semibold border border-white text-xl rounded-md bg-white text-orange-900 duration-150 w-full hover:bg-transparent">
                     <img src={googleLogoSVG} alt="Google Logo" className="h-5" />
                     <p>Google</p>
                 </button>

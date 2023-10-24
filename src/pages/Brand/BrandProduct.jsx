@@ -9,7 +9,7 @@ const BrandProduct = ({ product }) => {
 
     return (
         <>
-            <div className="card card-compact border rounded-md border-orange-600 group">
+            <div data-aos="fade-up" className="card card-compact border rounded-md border-orange-600 group">
                 <figure className='h-52 p-4'>
                     <img src={img} alt={`${name} from ${brand_name}`} className='h-full group-hover:scale-105 duration-200' />
                 </figure>
