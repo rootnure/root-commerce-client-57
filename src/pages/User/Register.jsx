@@ -10,6 +10,7 @@ const Register = () => {
     const { createUser, updateInfo, logOut } = useContext(AuthContext);
 
     const navigate = useNavigate();
+    const [passwordWarnMsg, setPasswordWarnMsg] = useState('');
 
     const handleRegister = e => {
         e.preventDefault();
@@ -52,6 +53,28 @@ const Register = () => {
             });
     }
 
+    const handleValidPassword = () => {
+        setPasswordWarnMsg('');
+        const submitBtn = document.querySelector('input[value="Register"]');
+        const password = document.querySelector('input[name="password"]').value;
+        if (password.length < 6) {
+            submitBtn.setAttribute('disabled', true);
+            setPasswordWarnMsg('Password must be at lest 6 character long');
+        } else if (!/[A-Z]/.test(password)) {
+            submitBtn.setAttribute('disabled', true);
+            setPasswordWarnMsg('Password must contain at lest one UPPERCASE (A-Z) character');
+        } else if (!/[0-9]/.test(password)) {
+            submitBtn.setAttribute('disabled', true);
+            setPasswordWarnMsg('Password must contain at lest one digit (0-9)');
+        } else if (!/[!@#$%^&*()_+\-=[\]{};'~`:"\\|,.<>/?]/.test(password)) {
+            submitBtn.setAttribute('disabled', true);
+            setPasswordWarnMsg('Password must contain at lest one special character');
+        } else {
+            submitBtn.removeAttribute('disabled');
+            setPasswordWarnMsg('');
+        }
+    }
+
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const handleTogglePasswordVisibility = () => {
         const checkboxElement = document.getElementById('togglePasswordVisibility');
@@ -74,13 +97,21 @@ const Register = () => {
                     <input type="email" name="email" id="email" placeholder="Your Email" className="w-full px-2 py-1.5 rounded text-black text-center" required />
                 </div>
                 <div className="mt-4">
-                    <input type={isPasswordVisible ? "text" : "password"} name="password" id="password" placeholder="Your Password" className="w-full px-2 py-1.5 rounded text-black text-center" required />
+                    <input
+                        onChange={handleValidPassword}
+                        type={isPasswordVisible ? "text" : "password"}
+                        name="password"
+                        id="password"
+                        placeholder="Your Password"
+                        className="w-full px-2 py-1.5 rounded text-black text-center"
+                        required />
                 </div>
-                <div className="mt-3 flex items-center gap-1">
+                <div className="mt-6 flex items-center gap-1 relative">
                     <input type="checkbox" name="togglePasswordVisibility" id="togglePasswordVisibility" onChange={handleTogglePasswordVisibility} />
                     <label htmlFor="togglePasswordVisibility">Show Password</label>
+                    {passwordWarnMsg ? <p className="absolute left-0 right-0 text-center -top-5 bg-white rounded px-0.5 font-exo-2 font-bold text-xs text-red-500">{passwordWarnMsg}</p> : ''}
                 </div>
-                <input type="submit" value="Register" className="mt-6 w-full py-2 rounded-md cursor-pointer font-bold duration-200 bg-orange-600 text-white hover:bg-white hover:text-orange-600" />
+                <input type="submit" disabled value="Register" className="btn border-0 mt-4 w-full rounded-md cursor-pointer font-bold duration-200 bg-orange-600 text-white hover:bg-white hover:text-orange-600" />
             </form>
             <div className="text-orange-900 mt-4">
                 <p>Already have an account? <Link to="/user/login" className="duration-75 font-semibold hover:font-bold">Login</Link></p>
