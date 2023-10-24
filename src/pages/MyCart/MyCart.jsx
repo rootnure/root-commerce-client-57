@@ -4,12 +4,15 @@ import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+import { toast } from "react-toastify";
 
 
 const MyCart = () => {
 
-    const user = { email: 'nur.diu.2791@gmail.com' };
-    const { email } = user;
+    const { user } = useContext(AuthContext);
+    const { email } = user || '';
 
     const [myCartData, setMyCartData] = useState({});
     useEffect(() => {
@@ -20,7 +23,7 @@ const MyCart = () => {
 
     const productIds = Object.keys(myCartData);
 
-    const updateCartToDb = newCart => {
+    const updateCartToDb = (newCart, type) => {
         fetch(`https://57-root-server.vercel.app/cart/${email}`, {
             method: 'PUT',
             headers: {
@@ -32,11 +35,13 @@ const MyCart = () => {
             .then(data => {
                 if (data.modifiedCount > 0) {
                     setMyCartData(newCart);
-                    Swal.fire(
-                        'Updated!',
-                        'Your cart has been updated.',
-                        'success'
-                    )
+                    if (type === 'updateQty') {
+                        toast.success('Cart updated')
+                    } else if (type === 'deleteProd') {
+                        toast.success('Item deleted from cart');
+                    } else {
+                        toast.success('Cart Updated');
+                    }
                 }
             })
     }
@@ -47,7 +52,7 @@ const MyCart = () => {
             ...myCartData,
             [_id]: parseInt(newQuantity < 1 ? 1 : newQuantity)
         }
-        updateCartToDb(newCart);
+        updateCartToDb(newCart, 'updateQty');
     }
 
     const handleRemoveFromCart = _id => {
@@ -62,7 +67,7 @@ const MyCart = () => {
             if (result.isConfirmed) {
                 const newCartData = { ...myCartData };
                 delete newCartData[_id];
-                updateCartToDb(newCartData);
+                updateCartToDb(newCartData, 'deleteProd');
             }
         })
     }
@@ -84,7 +89,7 @@ const MyCart = () => {
                             quantity={myCartData[productId]}
                             handleQuantity={handleQuantity}
                             handleRemoveFromCart={handleRemoveFromCart}></CartItem>) :
-                        <h2 className="text-2xl font-bold text-orange-300 italic text-center col-span-3 py-20">No products added to cart yet</h2>
+                        <h2 className="text-2xl font-bold text-orange-300 italic text-center py-20">No product in cart yet</h2>
                 }
             </div>
         </section>

@@ -4,6 +4,8 @@ import Footer from '../components/Footer/Footer';
 import { useEffect } from 'react';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Root = () => {
@@ -19,6 +21,18 @@ const Root = () => {
                 <Outlet />
             </main>
             <Footer />
+            <ToastContainer
+                position="top-right"
+                autoClose={3500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={true}
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable={false}
+                pauseOnHover={false}
+                theme="colored"
+            />
         </>
     );
 };

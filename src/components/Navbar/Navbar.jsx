@@ -1,18 +1,20 @@
 import { IoMdHome, IoIosCart, IoMdPerson, IoIosLogIn, IoIosLogOut, IoMdAddCircleOutline, IoMdSunny, IoMdMoon } from "react-icons/io";
 import { AiOutlineUserAdd } from "react-icons/ai";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import './Navbar.css';
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import { toast } from "react-toastify";
 // import useTheme from "../../hooks/useTheme";
 
 const Navbar = () => {
 
     // const { toggleTheme, isDarkMode } = useTheme();
     const isDarkMode = false;
+    const navigate = useNavigate();
 
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const { email } = user || '';
 
     let cartTotalItems = 0;
@@ -27,7 +29,14 @@ const Navbar = () => {
     }
 
     const handleLogOut = () => {
-        console.log('logout clicked');
+        logOut()
+            .then(() => {
+                toast.success('Logout Successfully');
+                navigate('/');
+            })
+            .catch(() => {
+                toast.warn('Something went wrong. Please try again.');
+            })
     }
 
     const links = <>

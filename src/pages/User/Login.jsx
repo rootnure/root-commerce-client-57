@@ -1,10 +1,15 @@
+import { useContext } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import { toast } from "react-toastify";
 
 
 const Login = () => {
 
-    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const navigate = useNavigate();
+
+    const { signIn } = useContext(AuthContext);
 
     const handleLogin = e => {
         e.preventDefault();
@@ -12,8 +17,21 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
+        signIn(email, password)
+            .then(() => {
+                toast.success('Login Successfully');
+                navigate('/');
+            })
+            .catch(err => {
+                if (err.message.includes('invalid')) {
+                    toast.error('Wrong Email or Password!');
+                } else {
+                    toast.warn('Something went wrong. Try again.');
+                }
+            })
     }
 
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const handleShowPassword = () => {
         const checkboxElement = document.getElementById('showPassword');
         const isChecked = checkboxElement.checked;
@@ -26,10 +44,10 @@ const Login = () => {
             <p className="text-center font-exo-2 italic mt-2">Use your login credential to login</p>
             <form onSubmit={handleLogin} className="mt-4">
                 <div>
-                    <input type="email" name="email" id="email" placeholder="Your Email" className="w-full px-2 py-1.5 rounded text-black text-center" />
+                    <input type="email" name="email" id="email" placeholder="Your Email" className="w-full px-2 py-1.5 rounded text-black text-center" required />
                 </div>
                 <div className="mt-4">
-                    <input type={isPasswordVisible ? "text" : "password"} name="password" id="password" placeholder="Your Password" className="w-full px-2 py-1.5 rounded text-black text-center" />
+                    <input type={isPasswordVisible ? "text" : "password"} name="password" id="password" placeholder="Your Password" className="w-full px-2 py-1.5 rounded text-black text-center" required />
                 </div>
                 <div className="mt-2 flex items-center gap-1">
                     <input type="checkbox" name="showPassword" id="showPassword" onChange={handleShowPassword} />
@@ -38,7 +56,7 @@ const Login = () => {
                 <input type="submit" value="Login" className="mt-6 w-full py-2 rounded-md cursor-pointer font-bold duration-200 bg-orange-600 text-white hover:bg-white hover:text-orange-600" />
             </form>
             <div className="text-orange-900 mt-4">
-                <p>Don&apos;t have an account? <Link to="/user/register" className="duration-75 hover:font-bold">Register</Link></p>
+                <p>Don&apos;t have an account? <Link to="/user/register" className="duration-75 font-semibold hover:font-bold">Register</Link></p>
             </div>
         </div>
     );

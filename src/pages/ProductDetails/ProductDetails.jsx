@@ -7,11 +7,13 @@ import { TbCurrencyTaka } from "react-icons/tb";
 import Rating from "../../components/Rating/Rating";
 import Swal from "sweetalert2";
 import MoreDetails from "./MoreDetails";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 
 
 const ProductDetails = () => {
 
-    const user = { email: 'nur.diu.2791@gmail.com' };
+    const { user } = useContext(AuthContext);
     const { email } = user;
 
     const navigate = useNavigate();
@@ -61,7 +63,7 @@ const ProductDetails = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if (data.modifiedCount > 0 || data.matchedCount > 0) {
+                if (data.modifiedCount > 0 || data.matchedCount > 0 || data?.upsertedId) {
                     Swal.fire({
                         icon: 'success',
                         title: 'Added',
