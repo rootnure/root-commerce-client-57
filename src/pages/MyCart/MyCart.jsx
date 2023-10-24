@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { toast } from "react-toastify";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 
 const MyCart = () => {
@@ -14,11 +15,15 @@ const MyCart = () => {
     const { user } = useContext(AuthContext);
     const { email } = user || '';
 
+    const [isDataLoading, setIsDataLoading] = useState(true);
     const [myCartData, setMyCartData] = useState({});
     useEffect(() => {
         fetch(`https://57-root-server.vercel.app/cart/${email}`)
             .then(res => res.json())
-            .then(data => setMyCartData(data))
+            .then(data => {
+                setMyCartData(data);
+                setIsDataLoading(false);
+            })
     }, [email])
 
     const productIds = Object.keys(myCartData);
@@ -82,14 +87,16 @@ const MyCart = () => {
             </div>
             <div className="space-y-4">
                 {
-                    productIds.length > 0 ?
-                        productIds.map(productId => <CartItem
-                            key={productId}
-                            productId={productId}
-                            quantity={myCartData[productId]}
-                            handleQuantity={handleQuantity}
-                            handleRemoveFromCart={handleRemoveFromCart}></CartItem>) :
-                        <h2 className="text-2xl font-bold text-orange-300 italic text-center py-20">No product in cart yet</h2>
+                    isDataLoading ?
+                        <LoadingSpinner /> :
+                        productIds.length > 0 ?
+                            productIds.map(productId => <CartItem
+                                key={productId}
+                                productId={productId}
+                                quantity={myCartData[productId]}
+                                handleQuantity={handleQuantity}
+                                handleRemoveFromCart={handleRemoveFromCart}></CartItem>) :
+                            <h2 className="text-2xl font-bold text-orange-300 italic text-center py-20">No product in cart yet</h2>
                 }
             </div>
         </section>
