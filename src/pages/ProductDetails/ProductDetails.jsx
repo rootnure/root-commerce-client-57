@@ -69,7 +69,7 @@ const ProductDetails = () => {
                         timer: 3000,
                         timerProgressBar: true,
                         showConfirmButton: false
-                    }).then(navigate(`/${brand_name}`))
+                    }).then(navigate(`/brand/${brand_name}`))
                 }
             })
     }
@@ -81,7 +81,7 @@ const ProductDetails = () => {
                     <title>{name} | root</title>
                 </Helmet>
                 <div className="my-6">
-                    <h3><Link className="text-xl font-pacifico flex items-center gap-2 p-4 hover:bg-orange-600 w-fit rounded-lg hover:text-white duration-150" to={`/${brand_name}`}><BsArrowLeft></BsArrowLeft>Back to {brand_name}</Link></h3>
+                    <h3><Link to={`/brand/${brand_name}`} className="text-xl font-pacifico flex items-center gap-2 p-4 hover:bg-orange-600 w-fit rounded-lg hover:text-white duration-150"><BsArrowLeft></BsArrowLeft>Back to {brand_name}</Link></h3>
                 </div>
                 <div className="grid grid-cols-3 gap-6">
                     <div className="card card-compact">

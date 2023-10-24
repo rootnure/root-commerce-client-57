@@ -3,6 +3,8 @@ import { AiOutlineUserAdd } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import './Navbar.css';
 import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 // import useTheme from "../../hooks/useTheme";
 
 const Navbar = () => {
@@ -10,8 +12,8 @@ const Navbar = () => {
     // const { toggleTheme, isDarkMode } = useTheme();
     const isDarkMode = false;
 
-    const user = { email: 'nur.diu.2791@gmail.com' };
-    const { email } = user;
+    const { user } = useContext(AuthContext);
+    const { email } = user || '';
 
     let cartTotalItems = 0;
     const [cartData, setCartData] = useState({});
@@ -32,7 +34,7 @@ const Navbar = () => {
         <NavLink to="/" title="Home" className="root-nav-btn border-black dark:border-white">
             <IoMdHome></IoMdHome>
         </NavLink>
-        {isNaN("user") ? <>
+        {user ? <>
             <NavLink to="/add-product" title="Add new product" className="root-nav-btn border-black dark:border-white">
                 <IoMdAddCircleOutline></IoMdAddCircleOutline>
             </NavLink>
@@ -40,18 +42,18 @@ const Navbar = () => {
                 <span className="indicator-item badge badge-secondary bg-orange-600">{cartTotalItems}</span>
                 <IoIosCart></IoIosCart>
             </NavLink>
-            <NavLink to="/profile" title="My Profile" className="root-nav-btn border-black dark:border-white">
+            <NavLink to="/user/profile" title="My Profile" className="root-nav-btn border-black dark:border-white">
                 <IoMdPerson></IoMdPerson>
             </NavLink>
             <button onClick={handleLogOut} title="logout" className="root-nav-btn border-black dark:border-white">
                 <IoIosLogOut></IoIosLogOut>
             </button>
         </> : ''}
-        {isNaN("user") ? <>
-            <NavLink to="/register" title="Register a new account" className="root-nav-btn border-black dark:border-white">
+        {!user ? <>
+            <NavLink to="/user/register" title="Register a new account" className="root-nav-btn border-black dark:border-white">
                 <AiOutlineUserAdd></AiOutlineUserAdd>
             </NavLink>
-            <NavLink to="/login" title="Login" className="root-nav-btn border-black dark:border-white">
+            <NavLink to="/user/login" title="Login" className="root-nav-btn border-black dark:border-white">
                 <IoIosLogIn></IoIosLogIn>
             </NavLink>
         </> : ''}

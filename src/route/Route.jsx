@@ -7,6 +7,9 @@ import AddProduct from "../pages/AddProduct/AddProduct";
 import UpdateProduct from "../pages/UpdateProduct/UpdateProduct";
 import ProductDetails from "../pages/ProductDetails/ProductDetails";
 import MyCart from "../pages/MyCart/MyCart";
+import Login from "../pages/User/Login";
+import Register from "../pages/User/register";
+import User from "../pages/User/User";
 
 
 const router = createBrowserRouter([
@@ -20,7 +23,7 @@ const router = createBrowserRouter([
                 element: <Home />
             },
             {
-                path: '/:brand',
+                path: '/brand/:brand',
                 element: <Brand />,
                 loader: ({ params }) => fetch(`https://57-root-server.vercel.app/products/${params.brand}`),
             },
@@ -43,10 +46,23 @@ const router = createBrowserRouter([
                 element: <MyCart />,
             },
             {
-                path: '/profile',
-                element: <div>User profile</div>,
+                path: '/user',
+                element: <User />,
+                children: [
+                    {
+                        path: '/user/profile',
+                        element: <div>User profile</div>,
+                    },
+                    {
+                        path: '/user/register',
+                        element: <Register />,
+                    },
+                    {
+                        path: '/user/login',
+                        element: <Login />,
+                    },
+                ]
             },
-
         ]
     },
 ]);
