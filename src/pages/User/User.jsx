@@ -5,7 +5,7 @@ const User = () => {
 
     return (
         <section className="relative">
-            <div className="min-h-[675px] bg-gradient-to-b -my-12 from-orange-500 to-orange-300 -z-50 relative">
+            <div className="min-h-[675px] bg-gradient-to-b -my-12 from-orange-300 to-orange-200 -z-50 relative">
                 <div className="text-transparent -z-40 absolute px-16 py-12 rounded-2xl bg-[#FFA04118] shadow-lg border-2 border-[#FFA04144] backdrop-blur rotate-45 top-12 left-12">1</div>
                 <div className="text-transparent -z-40 absolute px-16 py-12 rounded-2xl bg-[#FFA04118] shadow-lg border-2 border-[#FFA04144] backdrop-blur rotate-45 top-12 right-1/3">2</div>
                 <div className="text-transparent -z-40 absolute px-16 py-12 rounded-2xl bg-[#FFA04118] shadow-lg border-2 border-[#FFA04144] backdrop-blur -rotate-45 top-12 right-12">3</div>

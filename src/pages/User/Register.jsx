@@ -85,7 +85,7 @@ const Register = () => {
     }
 
     return (
-        <div className="p-8 rounded-2xl bg-[#ffa04128] shadow-2xl border-2 border-[#ffa04188] backdrop-blur-[3px] text-white w-4/12">
+        <div className="p-8 rounded-2xl bg-[#ffa04128] shadow-2xl border-2 border-[#ffa04188] backdrop-blur-[3px] text-orange-900 w-4/12">
             <Helmet>
                 <title>Register | root</title>
             </Helmet>

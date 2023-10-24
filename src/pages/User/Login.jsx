@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { toast } from "react-toastify";
 import GoogleLogin from "./GoogleLogin";
@@ -10,6 +10,7 @@ import { Helmet } from "react-helmet-async";
 const Login = () => {
 
     const navigate = useNavigate();
+    const location = useLocation();
 
     const { signIn } = useContext(AuthContext);
 
@@ -22,7 +23,7 @@ const Login = () => {
         signIn(email, password)
             .then(() => {
                 toast.success('Login Successfully');
-                navigate('/');
+                navigate(location.state || '/');
             })
             .catch(err => {
                 if (err.message.includes('invalid')) {
@@ -41,7 +42,7 @@ const Login = () => {
     }
 
     return (
-        <div className="p-8 rounded-2xl bg-[#ffa04128] shadow-2xl border-2 border-[#ffa04188] backdrop-blur-[3px] text-white w-4/12">
+        <div className="p-8 rounded-2xl bg-[#ffa04128] shadow-2xl border-2 border-[#ffa04188] backdrop-blur-[3px] text-orange-900 w-4/12">
             <Helmet>
                 <title>Login | root</title>
             </Helmet>
@@ -60,7 +61,7 @@ const Login = () => {
                 </div>
                 <input type="submit" value="Login" className="mt-6 w-full py-2 rounded-md cursor-pointer font-bold duration-200 bg-orange-600 text-white hover:bg-white hover:text-orange-600" />
             </form>
-            <div className="text-orange-900 mt-4">
+            <div className="mt-4">
                 <p>Don&apos;t have an account? <Link to="/user/register" className="duration-75 font-semibold hover:font-bold">Register</Link></p>
             </div>
             <GoogleLogin />

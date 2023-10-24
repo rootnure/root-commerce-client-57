@@ -11,8 +11,6 @@ const MoreDetails = ({ id }) => {
             .then(data => setDetails(data))
     }, [id]);
 
-    console.log(details);
-
     return (
         <section>
             <h2 className="text-4xl divider font-pacifico text-orange-600 my-12">More Details</h2>

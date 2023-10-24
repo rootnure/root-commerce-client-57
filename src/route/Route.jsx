@@ -10,6 +10,7 @@ import MyCart from "../pages/MyCart/MyCart";
 import Login from "../pages/User/Login";
 import Register from "../pages/User/register";
 import User from "../pages/User/User";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -29,30 +30,30 @@ const router = createBrowserRouter([
             },
             {
                 path: '/add-product',
-                element: <AddProduct />,
+                element: <PrivateRoute><AddProduct /></PrivateRoute>,
             },
             {
                 path: '/details/:id',
-                element: <ProductDetails />,
+                element: <PrivateRoute><ProductDetails /></PrivateRoute>,
                 loader: ({ params }) => fetch(`https://57-root-server.vercel.app/product/${params.id}`),
             },
             {
                 path: '/updateProduct/:id',
-                element: <UpdateProduct />,
+                element: <PrivateRoute><UpdateProduct /></PrivateRoute>,
                 loader: ({ params }) => fetch(`https://57-root-server.vercel.app/product/${params.id}`),
             },
             {
                 path: '/myCart/',
-                element: <MyCart />,
+                element: <PrivateRoute><MyCart /></PrivateRoute>,
+            },
+            {
+                path: '/profile',
+                element: <div>User profile</div>,
             },
             {
                 path: '/user',
                 element: <User />,
                 children: [
-                    {
-                        path: '/user/profile',
-                        element: <div>User profile</div>,
-                    },
                     {
                         path: '/user/register',
                         element: <Register />,
