@@ -1,8 +1,8 @@
-import { IoMdHome, IoIosCart, IoMdPerson, IoIosLogIn, IoIosLogOut, IoMdAddCircleOutline, IoMdSunny, IoMdMoon } from "react-icons/io";
+import { IoMdHome, IoIosCart, IoIosLogIn, IoIosLogOut, IoMdAddCircleOutline, IoMdSunny, IoMdMoon } from "react-icons/io";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { NavLink, useNavigate } from "react-router-dom";
 import './Navbar.css';
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { toast } from "react-toastify";
@@ -15,18 +15,18 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     const { user, logOut } = useContext(AuthContext);
-    const { email } = user || '';
+    // const { email } = user || '';
 
-    let cartTotalItems = 0;
-    const [cartData, setCartData] = useState({});
-    useEffect(() => {
-        fetch(`https://57-root-server.vercel.app/cart/${email}`)
-            .then(res => res.json())
-            .then(data => setCartData(data))
-    }, [email]);
-    for (const itemId in cartData) {
-        cartTotalItems += parseInt(cartData[itemId]);
-    }
+    // let cartTotalItems = 0;
+    // const [cartData, setCartData] = useState({});
+    // useEffect(() => {
+    //     fetch(`https://57-root-server.vercel.app/cart/${email}`)
+    //         .then(res => res.json())
+    //         .then(data => setCartData(data))
+    // }, [email]);
+    // for (const itemId in cartData) {
+    //     cartTotalItems += parseInt(cartData[itemId]);
+    // }
 
     const handleLogOut = () => {
         logOut()
@@ -48,15 +48,23 @@ const Navbar = () => {
                 <IoMdAddCircleOutline></IoMdAddCircleOutline>
             </NavLink>
             <NavLink to="/myCart" title="My Cart" className="root-nav-btn border-black dark:border-white indicator">
-                <span className="indicator-item badge badge-secondary bg-orange-600">{cartTotalItems}</span>
+                {/* <span className="indicator-item badge badge-secondary bg-orange-600">{cartTotalItems}</span> */}
                 <IoIosCart></IoIosCart>
-            </NavLink>
-            <NavLink to="/user/profile" title="My Profile" className="root-nav-btn border-black dark:border-white">
-                <IoMdPerson></IoMdPerson>
             </NavLink>
             <button onClick={handleLogOut} title="logout" className="root-nav-btn border-black dark:border-white">
                 <IoIosLogOut></IoIosLogOut>
             </button>
+            <details className="root-nav-btn !border-0 !px-0 hover:!bg-transparent flex dropdown" title={`Profile of ${user.displayName}`}>
+                <summary className="btn bg-transparent hover:bg-transparent pl-0 pr-0 border-0 h-auto min-h-fit">
+                    <img src={user.photoURL} alt="User Profile Picture" className="w-8 h-8 rounded-full" />
+                </summary>
+                <ul className="p-2 shadow menu dropdown-content z-[1] rounded-box w-max border mt-2 -ms-24 bg-white dark:bg-black text-orange-600">
+                    <li className="font-bold text-black dark:text-orange-600">{user.displayName}</li>
+                    <li>
+                        <NavLink to="/user/profile" title="My Profile">My Profile</NavLink>
+                    </li>
+                </ul>
+            </details>
         </> : ''}
         {!user ? <>
             <NavLink to="/user/register" title="Register a new account" className="root-nav-btn border-black dark:border-white">
@@ -67,11 +75,11 @@ const Navbar = () => {
             </NavLink>
         </> : ''}
         {/* <div onClick={() => toggleTheme()}> */}
-        <div>
+        <div className="flex items-center">
             <label className="swap swap-rotate">
                 <input type="checkbox" />
-                <IoMdSunny className="swap-on fill-current h-8 w-8 text-white"></IoMdSunny>
-                <IoMdMoon className="swap-off fill-current h-8 w-8 text-orange-600"></IoMdMoon>
+                <IoMdSunny className="swap-on fill-current h-8 w-8 p-1.5 rounded-lg bg-orange-600 text-white"></IoMdSunny>
+                <IoMdMoon className="swap-off fill-current h-8 w-8 p-1.5 rounded-lg bg-white text-orange-600"></IoMdMoon>
             </label>
         </div>
     </>
