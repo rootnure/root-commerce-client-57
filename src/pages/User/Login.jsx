@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { toast } from "react-toastify";
+import GoogleLogin from "./GoogleLogin";
+import { Helmet } from "react-helmet-async";
 
 
 const Login = () => {
@@ -40,6 +42,9 @@ const Login = () => {
 
     return (
         <div className="p-8 rounded-2xl bg-[#ffa04128] shadow-2xl border-2 border-[#ffa04188] backdrop-blur-[3px] text-white w-4/12">
+            <Helmet>
+                <title>Login | root</title>
+            </Helmet>
             <h2 className="text-4xl uppercase text-center font-exo-2 font-bold">Please Login</h2>
             <p className="text-center font-exo-2 italic mt-2">Use your login credential to login</p>
             <form onSubmit={handleLogin} className="mt-4">
@@ -58,6 +63,7 @@ const Login = () => {
             <div className="text-orange-900 mt-4">
                 <p>Don&apos;t have an account? <Link to="/user/register" className="duration-75 font-semibold hover:font-bold">Register</Link></p>
             </div>
+            <GoogleLogin />
         </div>
     );
 };

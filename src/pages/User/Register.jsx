@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import GoogleLogin from "./GoogleLogin";
+import { Helmet } from "react-helmet-async";
 
 
 const Register = () => {
@@ -84,6 +86,9 @@ const Register = () => {
 
     return (
         <div className="p-8 rounded-2xl bg-[#ffa04128] shadow-2xl border-2 border-[#ffa04188] backdrop-blur-[3px] text-white w-4/12">
+            <Helmet>
+                <title>Register | root</title>
+            </Helmet>
             <h2 className="text-4xl uppercase text-center font-exo-2 font-bold">Please Register</h2>
             <p className="text-center font-exo-2 italic mt-2">Register now to get in touch</p>
             <form onSubmit={handleRegister} className="mt-4">
@@ -116,6 +121,7 @@ const Register = () => {
             <div className="text-orange-900 mt-4">
                 <p>Already have an account? <Link to="/user/login" className="duration-75 font-semibold hover:font-bold">Login</Link></p>
             </div>
+            <GoogleLogin />
         </div>
     );
 };
