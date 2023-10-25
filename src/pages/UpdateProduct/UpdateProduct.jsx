@@ -89,15 +89,15 @@ const UpdateProduct = () => {
             <Helmet>
                 <title>Update {oldName} Details | root</title>
             </Helmet>
-            <h2 className="text-4xl py-4 text-center text-orange-600 font-pacifico divider">Update {oldName}</h2>
+            <h2 className="text-4xl py-4 text-center text-orange-600 font-pacifico md:divider">Update {oldName}</h2>
             <div className="my-6">
                 <h3><Link to={`/brand/${oldBrand}`} className="text-xl font-pacifico flex items-center gap-2 p-4 hover:bg-orange-600 w-fit rounded-lg hover:text-white duration-150"><BsArrowLeft></BsArrowLeft>Back to {oldBrand}</Link></h3>
             </div>
-            <div>
-                <form onSubmit={handleUpdateProduct} className="grid grid-cols-2 gap-x-2 gap-y-4 py-1.5">
+            <div className="px-4 py-6 md:px-0 md:py-0">
+                <form onSubmit={handleUpdateProduct} className="grid grid-cols-1 md:grid-cols-2 gap-x-2 gap-y-4 py-1.5">
                     {/* image */}
                     <div className="space-y-2">
-                        <label className="font-bold" htmlFor="image">Image</label>
+                        <label className="font-bold" htmlFor="image">Image (Direct Link)</label>
                         <input className="px-2 py-1.5 w-full rounded-md border border-orange-600" type="text" defaultValue={oldImg} name="image" id="image" placeholder="Image (Direct Link)" required />
                     </div>
                     {/* name */}
@@ -138,12 +138,12 @@ const UpdateProduct = () => {
                         <input className="px-2 py-1.5 w-full rounded-md border border-orange-600" type="number" min="0" max="5" step="0.01" defaultValue={oldRating} name="rating" id="rating" placeholder="Rating (0-5)" required />
                     </div>
                     {/* description */}
-                    <div className="space-y-2 col-span-2">
+                    <div className="space-y-2 md:col-span-2">
                         <label className="font-bold" htmlFor="shortDescription">Short Description</label>
                         <textarea className="px-2 py-1.5 w-full h-20 rounded-md border border-orange-600" type="text" defaultValue={oldDescription} name="shortDescription" id="shortDescription" placeholder="Short Description" required ></textarea>
                     </div>
                     {/* submit */}
-                    <div className="col-span-2">
+                    <div className="md:col-span-2">
                         <button type="submit" className="font-bold w-full px-6 py-2.5 rounded-md border border-orange-600 bg-orange-600 hover:bg-orange-500 text-white duration-200">Update Details</button>
                     </div>
                 </form>
