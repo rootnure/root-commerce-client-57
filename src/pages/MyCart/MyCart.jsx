@@ -82,6 +82,9 @@ const MyCart = () => {
             <Helmet>
                 <title>My Cart | root</title>
             </Helmet>
+            <div>
+                <h3 className="text-4xl font-pacifico text-orange-600 divider">My Cart</h3>
+            </div>
             <div className="my-6">
                 <h3><Link className="text-xl font-pacifico flex items-center gap-2 p-4 hover:bg-orange-600 w-fit rounded-lg hover:text-white duration-150" to={`/`}><BsArrowLeft></BsArrowLeft>Back To Home</Link></h3>
             </div>

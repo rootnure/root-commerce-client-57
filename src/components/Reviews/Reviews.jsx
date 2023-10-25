@@ -35,7 +35,7 @@ const Reviews = () => {
                             <img className="absolute -top-6 left-8 border-4 border-white rounded-full bg-white"
                                 src="https://i.ibb.co/pJmH4Nv/client.png" alt="" />
                             <p>Root deserves a very good appreciation for their service and time to time fast communication system. Fully satisfied with the services they provide. Recommended to all.</p>
-                            <h4 className="font-bold mt-2">Mrs. Talha Jha</h4>
+                            <h4 className="font-bold mt-2">Sofia Sinha</h4>
                             <div className="flex justify-end">
                                 <img src="https://i.ibb.co/3R1kQNV/circles.png" alt="" />
                             </div>
@@ -46,7 +46,7 @@ const Reviews = () => {
                             <img className="absolute -top-6 left-8 border-4 border-white rounded-full bg-white"
                                 src="https://i.ibb.co/pJmH4Nv/client.png" alt="" />
                             <p>I have never had such good service anywhere else like root. Fully satisfactory and recommended.</p>
-                            <h4 className="font-bold">Mrs. Sugandha Mishrah</h4>
+                            <h4 className="font-bold mt-2">Sofia Sinha</h4>
                             <div className="flex justify-end">
                                 <img src="https://i.ibb.co/3R1kQNV/circles.png" alt="" />
                             </div>
