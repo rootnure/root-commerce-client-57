@@ -75,8 +75,8 @@ const AddProduct = () => {
             <div className="my-6">
                 <h3><Link className="text-xl font-pacifico flex items-center gap-2 p-4 hover:bg-orange-600 w-fit rounded-lg hover:text-white duration-150" to='/'><BsArrowLeft></BsArrowLeft>Back to Home</Link></h3>
             </div>
-            <div>
-                <form onSubmit={handleAddProduct} className="grid grid-cols-2 gap-x-2 gap-y-4 py-1.5">
+            <div className="px-6 mb-6">
+                <form onSubmit={handleAddProduct} className="grid grid-cols-1 md:grid-cols-2 gap-x-2 gap-y-4 py-1.5">
                     {/* image */}
                     <div className="space-y-2">
                         <label className="font-bold" htmlFor="image">Image</label>
@@ -120,12 +120,12 @@ const AddProduct = () => {
                         <input className="px-2 py-1.5 w-full rounded-md border border-orange-600" type="number" min="0" max="5" step="0.01" name="rating" id="rating" placeholder="Rating (0-5)" required />
                     </div>
                     {/* description */}
-                    <div className="space-y-2 col-span-2">
+                    <div className="space-y-2 md:col-span-2">
                         <label className="font-bold" htmlFor="shortDescription">Short Description</label>
                         <textarea className="px-2 py-1.5 w-full h-20 rounded-md border border-orange-600" type="text" name="shortDescription" id="shortDescription" placeholder="Short Description" required ></textarea>
                     </div>
                     {/* submit */}
-                    <div className="col-span-2">
+                    <div className="md:col-span-2">
                         <button type="submit" className="font-bold w-full px-6 py-2.5 rounded-md border border-orange-600 bg-orange-600 hover:bg-orange-500 text-white duration-200">Add Product</button>
                     </div>
                 </form>
