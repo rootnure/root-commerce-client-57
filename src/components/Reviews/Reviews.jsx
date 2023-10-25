@@ -3,15 +3,15 @@
 const Reviews = () => {
     return (
         <>
-            <section data-aos="zoom-in" data-aos-duration="750"
-                className="my-12 mx-5 xl:mx-0 bg-gradient-to-r from-orange-400 to-orange-600 rounded-xl p-12 flex flex-col lg:flex-row gap-x-24">
+            {/* <section data-aos="zoom-in" data-aos-duration="750" */}
+            <section
+                className="my-12 mx-5 xl:mx-0 bg-gradient-to-r from-orange-400 to-orange-600 rounded-xl p-6 md:p-12 flex flex-col lg:flex-row gap-x-24">
                 <div className="flex-1 flex items-center">
                     <div className="space-y-4">
-                        <h2 className="text-4xl flex flex-col text-white font-pacifico leading-normal">
-                            <span>Super Clients</span>
-                            <span>Review</span>
+                        <h2 className="text-4xl mx-auto text-white text-center font-pacifico leading-normal">
+                            Super Clients Review
                         </h2>
-                        <p className="text-white">What our customer have to say about their shopping experience with <span className="text-xl font-pacifico">root</span>. Shop from <span className="text-xl font-pacifico">root</span> and share your experience because your voice matters.
+                        <p className="text-white text-center">What our customer have to say about their shopping experience with <span className="text-xl font-pacifico">root</span>. Shop from <span className="text-xl font-pacifico">root</span> and share your experience because your voice matters.
                         </p>
                     </div>
                 </div>

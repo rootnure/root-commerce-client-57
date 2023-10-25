@@ -23,7 +23,7 @@ const Brands = () => {
         <>
             <section>
                 <h2 className="text-4xl pt-12 pb-4 text-center text-orange-600 font-pacifico divider">Popular Brands</h2>
-                <div className="py-4 grid grid-cols-3 gap-4">
+                <div className="py-4 grid grid-cols-1 md:grid-cols-3 gap-4 px-6 md:px-0">
                     {
                         isDataLoading ?
                             <LoadingSpinner /> :
