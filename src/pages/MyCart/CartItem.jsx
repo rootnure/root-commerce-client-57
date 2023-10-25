@@ -26,7 +26,7 @@ const CartItem = ({ productId, quantity, handleQuantity, handleRemoveFromCart })
             </div>
             <div className="card card-compact w-full md:flex-row px-8 py-4 rounded-lg">
                 {/* item img */}
-                <figure className='w-40 h-40 me-6'>
+                <figure className='w-40 h-40 md:me-6 mx-auto'>
                     <img src={img} alt={name} className='max-w-full max-h-full' />
                 </figure>
                 <div className="grid grid-cols-1 md:grid-cols-12 flex-grow">

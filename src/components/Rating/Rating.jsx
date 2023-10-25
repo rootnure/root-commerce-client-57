@@ -23,7 +23,7 @@ const Rating = ({ rating }) => {
                 {
                     ratingStars.map(star => star)
                 }
-                <span className='ms-1 text-xs'>({rating})</span>
+                <span className='ms-1 text-xs text-black'>({rating})</span>
             </span>
         </>
     );
