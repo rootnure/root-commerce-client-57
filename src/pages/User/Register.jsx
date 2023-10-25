@@ -12,11 +12,12 @@ const Register = () => {
     const { user, createUser, updateInfo, logOut } = useContext(AuthContext);
 
     const navigate = useNavigate();
-    const [passwordWarnMsg, setPasswordWarnMsg] = useState('');
 
     if (user) {
         navigate('/');
     }
+
+    const [passwordWarnMsg, setPasswordWarnMsg] = useState('');
 
     const handleRegister = e => {
         e.preventDefault();

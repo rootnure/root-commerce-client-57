@@ -124,7 +124,7 @@ const Navbar = () => {
                         </NavLink>
                         <NavLink to="/myCart" className="flex flex-col items-center">
                             <IoIosCart className="text-lg"></IoIosCart>
-                            <p className="text-xs">Cart</p>
+                            <p className="text-xs">My Cart</p>
                         </NavLink>
                         <button onClick={handleLogOut} className="flex flex-col items-center">
                             <IoIosLogOut className="text-lg"></IoIosLogOut>

@@ -17,7 +17,7 @@
     @apply border-orange-400;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 768px) {
     .active {
         color: #EA580C !important;
         background-color: transparent !important;

@@ -10,13 +10,14 @@ import { Helmet } from "react-helmet-async";
 const Login = () => {
 
     const navigate = useNavigate();
-    const location = useLocation();
 
     const { user, signIn } = useContext(AuthContext);
 
     if (user) {
         navigate('/');
     }
+
+    const location = useLocation();
 
     const handleLogin = e => {
         e.preventDefault();

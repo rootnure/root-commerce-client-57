@@ -13,8 +13,6 @@ const UpdateProduct = () => {
 
     const { _id, img: oldImg, name: oldName, brand_name: oldBrand, type: oldType, price: oldPrice, short_description: oldDescription, rating: oldRating } = product;
 
-    console.log(product);
-
     const [types, setTypes] = useState([]);
     const [brands, setBrands] = useState([]);
 
