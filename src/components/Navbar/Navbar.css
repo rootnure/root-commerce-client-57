@@ -16,3 +16,20 @@
 .root-nav-btn:hover {
     @apply border-orange-400;
 }
+
+@media screen and (max-width: 640px) {
+    .active {
+        color: #EA580C !important;
+        background-color: transparent !important;
+        @apply border-0;
+    }
+
+    a.p.text-sm {
+        @apply text-gray-500;
+    }
+
+    .active:hover {
+        color: #EA580C !important;
+        background-color: transparent !important;
+    }
+}

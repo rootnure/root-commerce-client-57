@@ -74,31 +74,57 @@ const Navbar = () => {
                 <IoIosLogIn></IoIosLogIn>
             </NavLink>
         </> : ''}
-        {/* <div onClick={() => toggleTheme()}> */}
-        <div className="flex items-center">
-            <label className="swap swap-rotate">
-                <input type="checkbox" />
-                <IoMdSunny className="swap-on fill-current h-8 w-8 p-1.5 rounded-full bg-white text-orange-600"></IoMdSunny>
-                <IoMdMoon className="swap-off fill-current h-8 w-8 p-1.5 rounded-full bg-orange-600 text-white"></IoMdMoon>
-            </label>
-        </div>
     </>
 
     return (
-        // <header style={{ backgroundImage: `url("https://i.ibb.co/${isLightMode ? 'TRb60nH/10.png' : '4827d4m/7.png'}")` }} className="bg-cover flex justify-between px-12 items-center">
-        <header className="bg-cover flex justify-between px-12 items-center bg-nav-light dark:bg-nav-dark">
-            <section>
-                <Link to='/' className="flex items-center py-4 gap-2">
-                    <img src={`https://i.ibb.co/${isDarkMode ? '30ZpCGQ/logo-dark-bg-removed.png' : 'BcFXThK/logo-bg-removed.png'}`} alt="Website Logo" className="h-9" />
-                    <h2 className="text-4xl font-pacifico text-orange-600">Commerce</h2>
-                </Link>
+        <>
+            {/* <header style={{ backgroundImage: `url("https://i.ibb.co/${isLightMode ? 'TRb60nH/10.png' : '4827d4m/7.png'}")` }} className="bg-cover flex justify-between px-12 items-center"> */}
+            <header className="bg-cover flex justify-between px-6 md:px-12 items-center bg-nav-light dark:bg-nav-dark">
+                <section>
+                    <Link to='/' className="flex items-center py-4 gap-2">
+                        <img src={`https://i.ibb.co/${isDarkMode ? '30ZpCGQ/logo-dark-bg-removed.png' : 'BcFXThK/logo-bg-removed.png'}`} alt="Website Logo" className="h-9" />
+                        <h2 className="text-4xl font-pacifico text-orange-600">Commerce</h2>
+                    </Link>
+                </section>
+
+                <section className="flex gap-x-2 items-center">
+                    {/* navbar for large devices */}
+                    <nav className="md:flex justify-center items-center gap-3 py-2 hidden">
+                        {
+                            links
+                        }
+                    </nav>
+                    {/* <div onClick={() => toggleTheme()}> */}
+                    <div className="flex items-center">
+                        <label className="swap swap-rotate">
+                            <input type="checkbox" />
+                            <IoMdSunny className="swap-on fill-current h-8 w-8 p-1.5 rounded-full bg-white text-orange-600"></IoMdSunny>
+                            <IoMdMoon className="swap-off fill-current h-8 w-8 p-1.5 rounded-full bg-gray-600 text-white"></IoMdMoon>
+                        </label>
+                    </div>
+                </section>
+            </header>
+
+            {/* navbar for mobile & tablet view */}
+            <section className="md:hidden">
+                <nav className="h-16 z-[999] flex justify-around items-center w-full fixed bottom-0 bg-nav-light font-semibold">
+                    <NavLink to="/" className="flex flex-col items-center">
+                        <IoMdHome className="text-xl"></IoMdHome>
+                        <p className="text-sm">Home</p>
+                    </NavLink>
+                    {!user ? <>
+                        <NavLink to="/user/register" className="flex flex-col items-center">
+                            <AiOutlineUserAdd className="text-xl"></AiOutlineUserAdd>
+                            <p className="text-sm">Register</p>
+                        </NavLink>
+                        <NavLink to="/user/login" className="flex flex-col items-center">
+                            <IoIosLogIn className="text-xl"></IoIosLogIn>
+                            <p className="text-sm">Login</p>
+                        </NavLink>
+                    </> : ''}
+                </nav>
             </section>
-            <nav className="flex justify-center items-center gap-3 py-2">
-                {
-                    links
-                }
-            </nav>
-        </header>
+        </>
     );
 };
 

@@ -17,7 +17,7 @@ const Root = () => {
     return (
         <>
             <Navbar />
-            <main className='container mx-auto my-12'>
+            <main className='container mx-auto md:my-12 bg-cyan-50'>
                 <Outlet />
             </main>
             <Footer />
