@@ -85,15 +85,16 @@ const ProductDetails = () => {
                 <div className="my-6">
                     <h3><Link to={`/brand/${brand_name}`} className="text-xl font-pacifico flex items-center gap-2 p-4 hover:bg-orange-600 w-fit rounded-lg hover:text-white duration-150"><BsArrowLeft></BsArrowLeft>Back to {brand_name}</Link></h3>
                 </div>
-                <div className="grid grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+                    <h2 className="text-3xl text-orange-600 font-exo-2 font-semibold md:hidden text-center py-4 sticky top-0 bg-white z-[999]">{name}</h2>
                     <div className="card card-compact">
                         <figure className="h-[350px] p-4">
                             <img src={img} alt={name} className="max-h-full" />
                         </figure>
                     </div>
-                    <div className="col-span-2 space-y-4">
-                        <h2 className="text-3xl text-orange-600 font-exo-2 font-semibold mb-6">{name}</h2>
-                        <div className="flex gap-x-2.5">
+                    <div className="md:col-span-2 space-y-4 px-6">
+                        <h2 className="text-3xl text-orange-600 font-exo-2 font-semibold mb-6 hidden md:block">{name}</h2>
+                        <div className="flex flex-wrap gap-2.5">
                             <p className="px-3 py-0.5 rounded-full bg-orange-200 flex gap-1"><span>Price: </span><span className="font-semibold flex items-center">{price}<TbCurrencyTaka></TbCurrencyTaka></span></p>
                             <p className="px-3 py-0.5 rounded-full bg-orange-200 flex gap-1"><span>Status: </span><span className="font-semibold">In Stock</span></p>
                             <p className="px-3 py-0.5 rounded-full bg-orange-200 flex gap-1"><span>Brand: </span><span className="font-semibold">{brand_name}</span></p>
@@ -117,7 +118,7 @@ const ProductDetails = () => {
                     </div>
                 </div>
             </section>
-            <MoreDetails id={id} />
+            <MoreDetails id={id} name={name} />
         </>
     );
 };
