@@ -21,6 +21,8 @@ const Register = () => {
 
     const handleRegister = e => {
         e.preventDefault();
+        const loadingElement = document.querySelector('.fixed.top-0');
+        loadingElement.classList.remove('hidden');
         const form = e.target;
         const displayName = form.displayName.value;
         const photoURL = form.photoURL.value;
@@ -31,6 +33,7 @@ const Register = () => {
             .then(() => {
                 updateInfo(displayName, photoURL)
                     .then(() => {
+                        loadingElement.classList.add('hidden');
                         logOut();
                         let timerInterval;
                         Swal.fire({
@@ -93,44 +96,47 @@ const Register = () => {
     }
 
     return (
-        <div className="p-8 rounded-2xl bg-[#ffa04128] shadow-2xl border-2 border-[#ffa041] backdrop-blur-[3px] text-orange-900 w-11/12 md:w-4/12">
-            <Helmet>
-                <title>Register | root</title>
-            </Helmet>
-            <h2 className="text-4xl uppercase text-center font-exo-2 font-bold">Please Register</h2>
-            <p className="text-center font-exo-2 italic mt-2">Register now to get in touch</p>
-            <form onSubmit={handleRegister} className="mt-4">
-                <div className="mt-4">
-                    <input type="text" name="displayName" id="displayName" placeholder="Your Full Name" className="w-full px-2 py-1.5 rounded text-black text-center" required />
+        <>
+            <p className="fixed top-0 px-8 py-2 rounded-b bg-orange-600 text-white font-pacifico hidden">Loading...</p>
+            <div className="p-8 rounded-2xl bg-[#ffa04128] shadow-2xl border-2 border-[#ffa041] backdrop-blur-[3px] text-orange-900 w-11/12 md:w-4/12">
+                <Helmet>
+                    <title>Register | root</title>
+                </Helmet>
+                <h2 className="text-4xl uppercase text-center font-exo-2 font-bold">Please Register</h2>
+                <p className="text-center font-exo-2 italic mt-2">Register now to get in touch</p>
+                <form onSubmit={handleRegister} className="mt-4">
+                    <div className="mt-4">
+                        <input type="text" name="displayName" id="displayName" placeholder="Your Full Name" className="w-full px-2 py-1.5 rounded text-black text-center" required />
+                    </div>
+                    <div className="mt-4">
+                        <input type="text" name="photoURL" id="photoURL" placeholder="Profile Photo (Direct Link)" className="w-full px-2 py-1.5 rounded text-black text-center" required />
+                    </div>
+                    <div className="mt-4">
+                        <input type="email" name="email" id="email" placeholder="Your Email" className="w-full px-2 py-1.5 rounded text-black text-center" required />
+                    </div>
+                    <div className="mt-4">
+                        <input
+                            onChange={handleValidPassword}
+                            type={isPasswordVisible ? "text" : "password"}
+                            name="password"
+                            id="password"
+                            placeholder="Your Password"
+                            className="w-full px-2 py-1.5 rounded text-black text-center"
+                            required />
+                    </div>
+                    <div className="mt-6 flex items-center gap-1 relative">
+                        <input type="checkbox" name="togglePasswordVisibility" id="togglePasswordVisibility" onChange={handleTogglePasswordVisibility} />
+                        <label htmlFor="togglePasswordVisibility">Show Password</label>
+                        {passwordWarnMsg ? <p className="absolute left-0 right-0 text-center -top-5 bg-white rounded px-0.5 font-exo-2 font-bold text-xs text-red-500">{passwordWarnMsg}</p> : ''}
+                    </div>
+                    <input type="submit" disabled value="Register" className="btn border-0 mt-4 w-full rounded-md cursor-pointer font-bold duration-200 bg-orange-600 text-white hover:bg-white hover:text-orange-600" />
+                </form>
+                <div className="text-orange-900 mt-4">
+                    <p>Already have an account? <Link to="/user/login" className="duration-75 font-semibold hover:font-bold">Login</Link></p>
                 </div>
-                <div className="mt-4">
-                    <input type="text" name="photoURL" id="photoURL" placeholder="Profile Photo (Direct Link)" className="w-full px-2 py-1.5 rounded text-black text-center" required />
-                </div>
-                <div className="mt-4">
-                    <input type="email" name="email" id="email" placeholder="Your Email" className="w-full px-2 py-1.5 rounded text-black text-center" required />
-                </div>
-                <div className="mt-4">
-                    <input
-                        onChange={handleValidPassword}
-                        type={isPasswordVisible ? "text" : "password"}
-                        name="password"
-                        id="password"
-                        placeholder="Your Password"
-                        className="w-full px-2 py-1.5 rounded text-black text-center"
-                        required />
-                </div>
-                <div className="mt-6 flex items-center gap-1 relative">
-                    <input type="checkbox" name="togglePasswordVisibility" id="togglePasswordVisibility" onChange={handleTogglePasswordVisibility} />
-                    <label htmlFor="togglePasswordVisibility">Show Password</label>
-                    {passwordWarnMsg ? <p className="absolute left-0 right-0 text-center -top-5 bg-white rounded px-0.5 font-exo-2 font-bold text-xs text-red-500">{passwordWarnMsg}</p> : ''}
-                </div>
-                <input type="submit" disabled value="Register" className="btn border-0 mt-4 w-full rounded-md cursor-pointer font-bold duration-200 bg-orange-600 text-white hover:bg-white hover:text-orange-600" />
-            </form>
-            <div className="text-orange-900 mt-4">
-                <p>Already have an account? <Link to="/user/login" className="duration-75 font-semibold hover:font-bold">Login</Link></p>
+                <GoogleLogin />
             </div>
-            <GoogleLogin />
-        </div>
+        </>
     );
 };
 
