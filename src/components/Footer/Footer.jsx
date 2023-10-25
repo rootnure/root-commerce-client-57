@@ -71,7 +71,7 @@ const Footer = () => {
                     </div>
                 </div>
             </footer>
-            <div className="h-16 md:hidden"></div>
+            <div className="h-12 md:hidden"></div>
         </>
     );
 };

@@ -59,7 +59,10 @@ const Register = () => {
         setPasswordWarnMsg('');
         const submitBtn = document.querySelector('input[value="Register"]');
         const password = document.querySelector('input[name="password"]').value;
-        if (password.length < 6) {
+        if (password.length === 0) {
+            submitBtn.setAttribute('disabled', true);
+            setPasswordWarnMsg('Password cannot be empty');
+        } else if (password.length < 6) {
             submitBtn.setAttribute('disabled', true);
             setPasswordWarnMsg('Password must be at lest 6 character long');
         } else if (!/[A-Z]/.test(password)) {
@@ -85,7 +88,7 @@ const Register = () => {
     }
 
     return (
-        <div className="p-8 rounded-2xl bg-[#ffa04128] shadow-2xl border-2 border-[#ffa041] backdrop-blur-[3px] text-orange-900 w-4/12">
+        <div className="p-8 rounded-2xl bg-[#ffa04128] shadow-2xl border-2 border-[#ffa041] backdrop-blur-[3px] text-orange-900 w-11/12 md:w-4/12">
             <Helmet>
                 <title>Register | root</title>
             </Helmet>

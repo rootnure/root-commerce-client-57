@@ -24,10 +24,6 @@
         @apply border-0;
     }
 
-    a.p.text-sm {
-        @apply text-gray-500;
-    }
-
     .active:hover {
         color: #EA580C !important;
         background-color: transparent !important;

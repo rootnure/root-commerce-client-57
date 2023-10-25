@@ -107,19 +107,19 @@ const Navbar = () => {
 
             {/* navbar for mobile & tablet view */}
             <section className="md:hidden">
-                <nav className="h-16 z-[999] flex justify-around items-center w-full fixed bottom-0 bg-nav-light font-semibold">
+                <nav className="h-12 z-[999] flex justify-around items-center w-full fixed bottom-0 bg-nav-light font-semibold">
                     <NavLink to="/" className="flex flex-col items-center">
-                        <IoMdHome className="text-xl"></IoMdHome>
-                        <p className="text-sm">Home</p>
+                        <IoMdHome className="text-lg"></IoMdHome>
+                        <p className="text-xs">Home</p>
                     </NavLink>
                     {!user ? <>
                         <NavLink to="/user/register" className="flex flex-col items-center">
-                            <AiOutlineUserAdd className="text-xl"></AiOutlineUserAdd>
-                            <p className="text-sm">Register</p>
+                            <AiOutlineUserAdd className="text-lg"></AiOutlineUserAdd>
+                            <p className="text-xs">Register</p>
                         </NavLink>
                         <NavLink to="/user/login" className="flex flex-col items-center">
-                            <IoIosLogIn className="text-xl"></IoIosLogIn>
-                            <p className="text-sm">Login</p>
+                            <IoIosLogIn className="text-lg"></IoIosLogIn>
+                            <p className="text-xs">Login</p>
                         </NavLink>
                     </> : ''}
                 </nav>
