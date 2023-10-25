@@ -21,14 +21,17 @@ const Footer = () => {
     return (
         <>
             <footer className={`py-12 ${isLightMode ? 'bg-orange-100' : 'bg-black'}`}>
-                <div className="container mx-auto px-20">
-                    <img src="https://i.ibb.co/BcFXThK/logo-bg-removed.png" alt="Website Logo" className="w-24 mb-4" />
-                    <div className="grid grid-cols-2 gap-20 mt-4">
-                        <div className="flex flex-col gap-6">
-                            <p className="mt-2">Always ready to serve you. Connect with us to share your valuable reviews and get a chance to win exciting discount vouchers.</p>
+                <div className="container mx-auto px-6 md:px-20">
+                    <div className="flex justify-center md:justify-start gap-x-2">
+                        <img src="https://i.ibb.co/BcFXThK/logo-bg-removed.png" alt="Website Logo" className="w-24 mb-4" />
+                        <h3 className="text-4xl text-orange-600 font-pacifico">Commerce</h3>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-12 mt-4">
+                        <div className="flex flex-col gap-6 order-2 md:order-1">
+                            <p className="mt-2 text-center md:text-left">Always ready to serve you. Connect with us to share your valuable reviews and get a chance to win exciting discount vouchers.</p>
                             <div>
-                                <h4 className="footer-title">Social</h4>
-                                <div className="flex gap-4 text-4xl">
+                                <h4 className="footer-title text-center md:text-left">Social</h4>
+                                <div className="flex justify-center md:justify-start gap-4 text-4xl">
                                     <Link to="#"><FaFacebook className="text-blue-600"></FaFacebook></Link>
                                     <Link to="#"><FaTwitter className="text-blue-400"></FaTwitter></Link>
                                     <Link to="#"><FaInstagram className="text-rose-600"></FaInstagram></Link>
@@ -36,18 +39,18 @@ const Footer = () => {
                                 </div>
                             </div>
                             <div className="space-y-2">
-                                <h4 className="footer-title">Contact Us</h4>
+                                <h4 className="footer-title text-center md:text-left">Contact Us</h4>
                                 <p className="flex items-center gap-x-3"><span className="text-xl"><MdPhone className="text-orange-600"></MdPhone></span>+880 1799-999999</p>
                                 <p className="flex items-center gap-x-3"><span className="text-xl"><MdEmail className="text-orange-600"></MdEmail></span>contact@root.com</p>
                                 <p className="flex items-center gap-x-3"><span className="text-xl"><MdLocationOn className="text-orange-600"></MdLocationOn></span><span>27/9, 500 Feet, Queen Road, Dhaka-1250</span></p>
                             </div>
                             <div>
-                                <p><small>Copyright &copy; 2023 | root inc.</small></p>
+                                <p className="text-center md:text-left"><small>Copyright &copy; 2023 | root inc.</small></p>
                             </div>
                         </div>
-                        <div className="">
+                        <div className="order-1 md:order-2">
                             <div>
-                                <h2 className="text-4xl text-orange-600 font-pacifico">Write to us</h2>
+                                <h2 className="text-4xl text-orange-600 font-pacifico text-center mt-12 md:mt-0 md:text-left">Write to us</h2>
                             </div>
                             <form onSubmit={handleFooterFormSubmit} className="space-y-3 mt-6">
                                 <div className="flex gap-2">
