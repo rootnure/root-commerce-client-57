@@ -26,9 +26,10 @@ const Footer = () => {
                         <img src="https://i.ibb.co/BcFXThK/logo-bg-removed.png" alt="Website Logo" className="w-24 mb-4" />
                         <h3 className="text-4xl text-orange-600 font-pacifico">Commerce</h3>
                     </div>
+                    <p className="mt-2 text-center md:hidden">Always ready to serve you. Connect with us to share your valuable reviews and get a chance to win exciting discount vouchers.</p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-12 mt-4">
                         <div className="flex flex-col gap-6 order-2 md:order-1">
-                            <p className="mt-2 text-center md:text-left">Always ready to serve you. Connect with us to share your valuable reviews and get a chance to win exciting discount vouchers.</p>
+                            <p className="mt-2 hidden md:block md:text-left">Always ready to serve you. Connect with us to share your valuable reviews and get a chance to win exciting discount vouchers.</p>
                             <div>
                                 <h4 className="footer-title text-center md:text-left">Social</h4>
                                 <div className="flex justify-center md:justify-start gap-4 text-4xl">
