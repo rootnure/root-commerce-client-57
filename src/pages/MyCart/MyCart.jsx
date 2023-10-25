@@ -85,19 +85,26 @@ const MyCart = () => {
             <div className="my-6">
                 <h3><Link className="text-xl font-pacifico flex items-center gap-2 p-4 hover:bg-orange-600 w-fit rounded-lg hover:text-white duration-150" to={`/`}><BsArrowLeft></BsArrowLeft>Back To Home</Link></h3>
             </div>
-            <div className="space-y-4">
-                {
-                    isDataLoading ?
-                        <LoadingSpinner /> :
-                        productIds.length > 0 ?
-                            productIds.map(productId => <CartItem
-                                key={productId}
-                                productId={productId}
-                                quantity={myCartData[productId]}
-                                handleQuantity={handleQuantity}
-                                handleRemoveFromCart={handleRemoveFromCart}></CartItem>) :
-                            <h2 className="text-2xl font-bold text-orange-300 italic text-center py-20">No product in cart yet</h2>
-                }
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                <div className="space-y-4 px-6 md:px-0 mb-6 md:col-span-3 lg:col-span-4 xl:col-span-4">
+                    {
+                        isDataLoading ?
+                            <LoadingSpinner /> :
+                            productIds.length > 0 ?
+                                productIds.map(productId => <CartItem
+                                    key={productId}
+                                    productId={productId}
+                                    quantity={myCartData[productId]}
+                                    handleQuantity={handleQuantity}
+                                    handleRemoveFromCart={handleRemoveFromCart}></CartItem>) :
+                                <h2 className="text-2xl font-bold text-orange-300 italic text-center py-20">No product in cart yet</h2>
+                    }
+                </div>
+                <div className="relative">
+                    <div className="sticky top-2 border border-orange-600 rounded-md">
+                        cart summary
+                    </div>
+                </div>
             </div>
         </section>
     );
