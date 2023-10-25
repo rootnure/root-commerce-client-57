@@ -20,9 +20,9 @@ const FAQ = () => {
     return (
         <section className="my-12">
             <div className="divider py-12">
-                <img src="https://i.ibb.co/Gt7Pzfs/Image.png" alt="faq" className="w-2/12 mx-auto" />
+                <img src="https://i.ibb.co/Gt7Pzfs/Image.png" alt="faq" className="w-5/12 md:w-2/12 mx-auto" />
             </div>
-            <div data-aos="fade-up" className="w-9/12 mx-auto space-y-3">
+            <div data-aos="fade-up" className="w-11/12 md:w-9/12 mx-auto space-y-3">
                 {
                     isDataLoading ?
                         <LoadingSpinner /> :
