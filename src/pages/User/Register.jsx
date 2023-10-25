@@ -9,10 +9,14 @@ import { Helmet } from "react-helmet-async";
 
 const Register = () => {
 
-    const { createUser, updateInfo, logOut } = useContext(AuthContext);
+    const { user, createUser, updateInfo, logOut } = useContext(AuthContext);
 
     const navigate = useNavigate();
     const [passwordWarnMsg, setPasswordWarnMsg] = useState('');
+
+    if (user) {
+        navigate('/');
+    }
 
     const handleRegister = e => {
         e.preventDefault();

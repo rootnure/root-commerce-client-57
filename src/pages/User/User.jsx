@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
 
 const User = () => {
@@ -20,6 +20,7 @@ const User = () => {
             </div>
             <div className="flex justify-center items-center absolute top-0 bottom-0 left-0 right-0">
                 <Outlet />
+                <Navigate to='/user/login'></Navigate>
             </div>
         </section>
     );

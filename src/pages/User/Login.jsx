@@ -12,7 +12,11 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const { signIn } = useContext(AuthContext);
+    const { user, signIn } = useContext(AuthContext);
+
+    if (user) {
+        navigate('/');
+    }
 
     const handleLogin = e => {
         e.preventDefault();
