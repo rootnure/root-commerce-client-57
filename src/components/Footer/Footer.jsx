@@ -1,11 +1,17 @@
+import { useContext } from "react";
 import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa6";
 import { MdPhone, MdEmail, MdLocationOn } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 
 const Footer = () => {
 
     const isLightMode = true;
+
+    const { user } = useContext(AuthContext);
+    const userName = user?.displayName || '';
+    const userEmail = user?.email || '';
 
     const handleFooterFormSubmit = e => {
         e.preventDefault();
@@ -55,8 +61,8 @@ const Footer = () => {
                             </div>
                             <form onSubmit={handleFooterFormSubmit} className="space-y-3 mt-6">
                                 <div className="flex gap-2">
-                                    <input className="w-full px-3 py-1 rounded duration-150" type="text" name="name" placeholder="Name (optional)" />
-                                    <input className="w-full px-3 py-1 rounded duration-150" type="email" name="email" placeholder="Email (optional)" />
+                                    <input className="w-full px-3 py-1 rounded duration-150" defaultValue={userName} type="text" name="name" placeholder="Name (optional)" />
+                                    <input className="w-full px-3 py-1 rounded duration-150" defaultValue={userEmail} type="email" name="email" placeholder="Email (optional)" />
                                 </div>
                                 <input className="w-full px-3 py-1 rounded duration-150" type="text" name="subject" placeholder="Subject*" required />
                                 <br />

@@ -51,17 +51,18 @@ const Navbar = () => {
                 {/* <span className="indicator-item badge badge-secondary bg-orange-600">{cartTotalItems}</span> */}
                 <IoIosCart></IoIosCart>
             </NavLink>
-            <details className="root-nav-btn !border-0 !px-0 hover:!bg-transparent flex dropdown" title={`Profile of ${user.displayName}`}>
-                <summary className="btn bg-transparent hover:bg-transparent pl-0 pr-0 border-0 h-auto min-h-fit">
+            <div className="root-nav-btn !border-0 !px-0 hover:!bg-transparent flex dropdown dropdown-end" title={`Profile of ${user.displayName}`}>
+                <label tabIndex={0} className="btn bg-transparent hover:bg-transparent pl-0 pr-0 border-0 h-auto min-h-fit">
                     <img src={user.photoURL} alt="User Profile Picture" className="w-8 h-8 rounded-full" />
-                </summary>
-                <ul className="p-2 shadow menu dropdown-content z-[1] rounded-box w-max border mt-2 -ms-24 bg-white dark:bg-black text-orange-600">
-                    <li className="font-bold text-black dark:text-orange-600">{user.displayName}</li>
+                </label>
+                <ul className="p-2 shadow menu dropdown-content z-[1] rounded-box w-52 border mt-8 bg-white dark:bg-black text-orange-600">
+                    <li className="font-bold text-center text-black dark:text-orange-600">{user?.displayName}</li>
+                    <li className="text-center text-gray-400 mt-2 mb-1">{user?.email}</li>
                     <li>
-                        <NavLink to="/profile" title="My Profile">My Profile</NavLink>
+                        <NavLink to="/profile" title="My Profile" className="text-center block hover:font-semibold hover:text-orange-600">My Profile</NavLink>
                     </li>
                 </ul>
-            </details>
+            </div>
             <button onClick={handleLogOut} title="logout" className="root-nav-btn border-orange-600 dark:border-white">
                 <IoIosLogOut></IoIosLogOut>
             </button>
@@ -112,6 +113,24 @@ const Navbar = () => {
                         <IoMdHome className="text-lg"></IoMdHome>
                         <p className="text-xs">Home</p>
                     </NavLink>
+                    {user ? <>
+                        <NavLink to="/add-product" className="flex flex-col items-center">
+                            <IoMdAddCircleOutline className="text-lg"></IoMdAddCircleOutline>
+                            <p className="text-xs">Add Product</p>
+                        </NavLink>
+                        <NavLink to="/profile" className="flex flex-col items-center">
+                            <img src={user.photoURL} alt="User Profile Picture" className="w-5 h-5 rounded-full" />
+                            <p className="text-xs normal-case">My Profile</p>
+                        </NavLink>
+                        <NavLink to="/myCart" className="flex flex-col items-center">
+                            <IoIosCart className="text-lg"></IoIosCart>
+                            <p className="text-xs">Cart</p>
+                        </NavLink>
+                        <button onClick={handleLogOut} className="flex flex-col items-center">
+                            <IoIosLogOut className="text-lg"></IoIosLogOut>
+                            <p className="text-xs">Log Out</p>
+                        </button>
+                    </> : ''}
                     {!user ? <>
                         <NavLink to="/user/register" className="flex flex-col items-center">
                             <AiOutlineUserAdd className="text-lg"></AiOutlineUserAdd>
