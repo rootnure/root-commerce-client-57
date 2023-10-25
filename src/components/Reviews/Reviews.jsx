@@ -3,8 +3,7 @@
 const Reviews = () => {
     return (
         <>
-            {/* <section data-aos="zoom-in" data-aos-duration="750" */}
-            <section
+            <section data-aos="zoom-in" data-aos-duration="750"
                 className="my-12 mx-5 xl:mx-0 bg-gradient-to-r from-orange-400 to-orange-600 rounded-xl p-6 md:p-12 flex flex-col lg:flex-row gap-x-24">
                 <div className="flex-1 flex items-center">
                     <div className="space-y-4">

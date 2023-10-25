@@ -5,7 +5,7 @@ const Question = ({ ques }) => {
     const { question, answer } = ques;
     return (
         <>
-            <div className="collapse collapse-arrow bg-orange-500 text-white">
+            <div data-aos="zoom-in" className="collapse collapse-arrow bg-orange-500 text-white">
                 <input type="radio" name="faq-accordion" />
                 <div className="collapse-title text-xl font-medium">
                     {question}
