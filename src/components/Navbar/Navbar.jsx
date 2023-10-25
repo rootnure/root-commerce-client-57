@@ -80,8 +80,8 @@ const Navbar = () => {
                     <div className="flex items-center">
                         <label className="swap swap-rotate">
                             <input type="checkbox" />
-                            <IoMdSunny onClick={() => setIsDarkMode('light')} title="Dark" className="swap-on fill-current h-8 w-8 p-1.5 rounded-full bg-white text-orange-600"></IoMdSunny>
-                            <IoMdMoon onClick={() => setIsDarkMode('dark')} title="Light" className="swap-off fill-current h-8 w-8 p-1.5 rounded-full bg-gray-600 text-white"></IoMdMoon>
+                            <IoMdSunny onClick={() => setIsDarkMode('dark')} title="Dark" className="swap-on fill-current h-8 w-8 p-1.5 rounded-full bg-white text-orange-600"></IoMdSunny>
+                            <IoMdMoon onClick={() => setIsDarkMode('light')} title="Light" className="swap-off fill-current h-8 w-8 p-1.5 rounded-full bg-gray-600 text-white"></IoMdMoon>
                         </label>
                     </div>
                 </section>
