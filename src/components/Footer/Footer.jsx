@@ -49,7 +49,7 @@ const Footer = () => {
                                 <p className="text-center md:text-left"><small>Copyright &copy; 2023 | root inc.</small></p>
                             </div>
                         </div>
-                        <div className="order-1 md:order-2">
+                        <div data-aos="fade-up" className="order-1 md:order-2">
                             <div>
                                 <h2 className="text-4xl text-orange-600 font-pacifico text-center mt-12 md:mt-0 md:text-left">Write to us</h2>
                             </div>

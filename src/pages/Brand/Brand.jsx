@@ -17,11 +17,11 @@ const Brand = () => {
             <Helmet>
                 <title>{loadedBrand} | root</title>
             </Helmet>
-            <h2 className="text-4xl py-4 text-center text-orange-600 font-pacifico divider">Available {loadedBrand} Products</h2>
+            <h2 className="text-3xl md:text-4xl py-4 text-center text-orange-600 font-pacifico divider">Available {loadedBrand} Products</h2>
             <div className="my-6">
                 <h3><Link className="text-xl font-pacifico flex items-center gap-2 p-4 hover:bg-orange-600 w-fit rounded-lg hover:text-white duration-150" to='/'><BsArrowLeft></BsArrowLeft>Back to Home</Link></h3>
             </div>
-            <div className="grid grid-cols-3 gap-3 mt-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-12 px-3 md:px-0 my-6">
                 {
                     loadedProducts.length < 1 ?
                         <h2 className="text-2xl font-bold text-orange-300 italic text-center col-span-3 pt-12 pb-20">No products available for {loadedBrand}</h2> :
