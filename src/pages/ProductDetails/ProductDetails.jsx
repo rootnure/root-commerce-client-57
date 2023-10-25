@@ -95,9 +95,9 @@ const ProductDetails = () => {
                     <div className="md:col-span-2 space-y-4 px-6">
                         <h2 className="text-3xl text-orange-600 font-exo-2 font-semibold mb-6 hidden md:block">{name}</h2>
                         <div className="flex flex-wrap gap-2.5">
-                            <p className="px-3 py-0.5 rounded-full bg-orange-200 flex gap-1"><span>Price: </span><span className="font-semibold flex items-center">{price}<TbCurrencyTaka></TbCurrencyTaka></span></p>
-                            <p className="px-3 py-0.5 rounded-full bg-orange-200 flex gap-1"><span>Status: </span><span className="font-semibold">In Stock</span></p>
-                            <p className="px-3 py-0.5 rounded-full bg-orange-200 flex gap-1"><span>Brand: </span><span className="font-semibold">{brand_name}</span></p>
+                            <p className="px-3 py-0.5 rounded-full bg-orange-200 flex gap-1 text-black"><span>Price: </span><span className="font-semibold flex items-center">{price}<TbCurrencyTaka></TbCurrencyTaka></span></p>
+                            <p className="px-3 py-0.5 rounded-full bg-orange-200 flex gap-1 text-black"><span>Status: </span><span className="font-semibold">In Stock</span></p>
+                            <p className="px-3 py-0.5 rounded-full bg-orange-200 flex gap-1 text-black"><span>Brand: </span><span className="font-semibold">{brand_name}</span></p>
                         </div>
                         <div>
                             <h3 className="text-xl font-semibold">Key Features</h3>

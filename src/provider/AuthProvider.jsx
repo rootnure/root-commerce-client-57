@@ -10,6 +10,9 @@ const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
 
+    const theme = document.documentElement.getAttribute('data-theme');
+
+    const [isDarkMode, setIsDarkMode] = useState(theme);
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -40,6 +43,8 @@ const AuthProvider = ({ children }) => {
     const authFunctionalities = {
         user,
         loading,
+        isDarkMode,
+        setIsDarkMode,
         createUser,
         signIn,
         updateInfo,
@@ -55,6 +60,9 @@ const AuthProvider = ({ children }) => {
 
         return () => unsubscribe();
     }, [])
+
+    const html = document.documentElement;
+    html.setAttribute('data-theme', isDarkMode);
 
     return (
         <AuthContext.Provider value={authFunctionalities}>

@@ -2,31 +2,14 @@ import { IoMdHome, IoIosCart, IoIosLogIn, IoIosLogOut, IoMdAddCircleOutline, IoM
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import './Navbar.css';
-// import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { toast } from "react-toastify";
-// import useTheme from "../../hooks/useTheme";
 
 const Navbar = () => {
-
-    // const { toggleTheme, isDarkMode } = useTheme();
-    const isDarkMode = false;
     const navigate = useNavigate();
 
-    const { user, logOut } = useContext(AuthContext);
-    // const { email } = user || '';
-
-    // let cartTotalItems = 0;
-    // const [cartData, setCartData] = useState({});
-    // useEffect(() => {
-    //     fetch(`https://57-root-server.vercel.app/cart/${email}`)
-    //         .then(res => res.json())
-    //         .then(data => setCartData(data))
-    // }, [email]);
-    // for (const itemId in cartData) {
-    //     cartTotalItems += parseInt(cartData[itemId]);
-    // }
+    const { user, logOut, isDarkMode, setIsDarkMode } = useContext(AuthContext);
 
     const handleLogOut = () => {
         logOut()
@@ -40,15 +23,14 @@ const Navbar = () => {
     }
 
     const links = <>
-        <NavLink to="/" title="Home" className="root-nav-btn border-black dark:border-white">
+        <NavLink to="/" title="Home" className={`root-nav-btn ${isDarkMode === 'dark' ? 'border-white' : 'border-black'}`}>
             <IoMdHome></IoMdHome>
         </NavLink>
         {user ? <>
-            <NavLink to="/add-product" title="Add new product" className="root-nav-btn border-black dark:border-white">
+            <NavLink to="/add-product" title="Add new product" className={`root-nav-btn ${isDarkMode === 'dark' ? 'border-white' : 'border-black'}`}>
                 <IoMdAddCircleOutline></IoMdAddCircleOutline>
             </NavLink>
-            <NavLink to="/myCart" title="My Cart" className="root-nav-btn border-black dark:border-white indicator">
-                {/* <span className="indicator-item badge badge-secondary bg-orange-600">{cartTotalItems}</span> */}
+            <NavLink to="/myCart" title="My Cart" className={`root-nav-btn ${isDarkMode === 'dark' ? 'border-white' : 'border-black'}`}>
                 <IoIosCart></IoIosCart>
             </NavLink>
             <div className="root-nav-btn !border-0 !px-0 hover:!bg-transparent flex dropdown dropdown-end" title={`Profile of ${user.displayName}`}>
@@ -68,10 +50,10 @@ const Navbar = () => {
             </button>
         </> : ''}
         {!user ? <>
-            <NavLink to="/user/register" title="Register a new account" className="root-nav-btn border-black dark:border-white">
+            <NavLink to="/user/register" title="Register a new account" className={`root-nav-btn ${isDarkMode === 'dark' ? 'border-white' : 'border-black'}`}>
                 <AiOutlineUserAdd></AiOutlineUserAdd>
             </NavLink>
-            <NavLink to="/user/login" title="Login" className="root-nav-btn border-black dark:border-white">
+            <NavLink to="/user/login" title="Login" className={`root-nav-btn ${isDarkMode === 'dark' ? 'border-white' : 'border-black'}`}>
                 <IoIosLogIn></IoIosLogIn>
             </NavLink>
         </> : ''}
@@ -79,11 +61,10 @@ const Navbar = () => {
 
     return (
         <>
-            {/* <header style={{ backgroundImage: `url("https://i.ibb.co/${isLightMode ? 'TRb60nH/10.png' : '4827d4m/7.png'}")` }} className="bg-cover flex justify-between px-12 items-center"> */}
-            <header className="bg-cover flex justify-between px-6 md:px-12 items-center bg-nav-light dark:bg-nav-dark">
+            <header className={`bg-cover flex justify-between px-6 md:px-12 items-center ${isDarkMode === 'dark' ? 'bg-nav-dark' : 'bg-nav-light'}`}>
                 <section>
                     <Link to='/' className="flex items-center py-4 gap-2">
-                        <img src={`https://i.ibb.co/${isDarkMode ? '30ZpCGQ/logo-dark-bg-removed.png' : 'BcFXThK/logo-bg-removed.png'}`} alt="Website Logo" className="h-9" />
+                        <img src={`https://i.ibb.co/${isDarkMode === 'dark' ? '30ZpCGQ/logo-dark-bg-removed.png' : 'BcFXThK/logo-bg-removed.png'}`} alt="Website Logo" className="h-9" />
                         <h2 className="text-4xl font-pacifico text-orange-600">Commerce</h2>
                     </Link>
                 </section>
@@ -99,8 +80,8 @@ const Navbar = () => {
                     <div className="flex items-center">
                         <label className="swap swap-rotate">
                             <input type="checkbox" />
-                            <IoMdSunny className="swap-on fill-current h-8 w-8 p-1.5 rounded-full bg-white text-orange-600"></IoMdSunny>
-                            <IoMdMoon className="swap-off fill-current h-8 w-8 p-1.5 rounded-full bg-gray-600 text-white"></IoMdMoon>
+                            <IoMdSunny onClick={() => setIsDarkMode('light')} title="Dark" className="swap-on fill-current h-8 w-8 p-1.5 rounded-full bg-white text-orange-600"></IoMdSunny>
+                            <IoMdMoon onClick={() => setIsDarkMode('dark')} title="Light" className="swap-off fill-current h-8 w-8 p-1.5 rounded-full bg-gray-600 text-white"></IoMdMoon>
                         </label>
                     </div>
                 </section>

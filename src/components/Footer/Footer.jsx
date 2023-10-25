@@ -7,7 +7,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 
 const Footer = () => {
 
-    const isLightMode = true;
+    const { isDarkMode } = useContext(AuthContext);
 
     const { user } = useContext(AuthContext);
     const userName = user?.displayName || '';
@@ -26,10 +26,10 @@ const Footer = () => {
 
     return (
         <>
-            <footer className={`py-12 ${isLightMode ? 'bg-orange-100' : 'bg-black'}`}>
+            <footer className={`py-12 ${isDarkMode === 'dark' ? 'bg-gray-800' : 'bg-orange-100'}`}>
                 <div className="container mx-auto px-6 md:px-20">
                     <div className="flex justify-center md:justify-start gap-x-2">
-                        <img src="https://i.ibb.co/BcFXThK/logo-bg-removed.png" alt="Website Logo" className="w-24 mb-4" />
+                        <img src={`https://i.ibb.co/${isDarkMode === 'dark' ? '30ZpCGQ/logo-dark-bg-removed.png' : 'BcFXThK/logo-bg-removed.png'}`} alt="Website Logo" className="h-9" />
                         <h3 className="text-4xl text-orange-600 font-pacifico">Commerce</h3>
                     </div>
                     <p className="mt-2 text-center md:hidden">Always ready to serve you. Connect with us to share your valuable reviews and get a chance to win exciting discount vouchers.</p>
